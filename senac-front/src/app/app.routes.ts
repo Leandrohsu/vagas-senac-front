@@ -13,8 +13,8 @@ import { VagasListComponent } from './components/vagas/vagas-list/vagas-list.com
 import { VagasFormComponent } from './components/vagas/vagas-form/vagas-form.component';
 
 export const routes: Routes = [
-    {path: "", redirectTo: "login", pathMatch: 'full'},
-    {path: "login", component: LoginComponent},
+    {path: "", redirectTo: "vagas", pathMatch: 'full'},
+    {path: "vagas", component: VagasListComponent},
     {path: "admin", component: PrincipalComponent,children:[
         {path: "candidato", component: CandidatosListComponent},
         {path: "candidato/new", component: CandidatosFormComponent},
