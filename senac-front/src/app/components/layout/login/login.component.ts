@@ -20,13 +20,12 @@ export class LoginComponent {
 
   logar(){
     if(this.login.username == 'admin' && this.login.password == 'admin'){
-      this.router.navigate(['admin/aluno']);
+      this.router.navigate(['admin/vagas']);
     }else{
       Swal.fire({
         icon: "error",
         title: "Epa",
-        text: "C digitou o user ou senha errado animal",
-        footer: '<a href="#">tenta de novo</a>'
+        text: "C digitou o user ou senha errado animal"
       });
     }
   }
