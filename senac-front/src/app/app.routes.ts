@@ -14,9 +14,8 @@ import { VagasFormComponent } from './components/vagas/vagas-form/vagas-form.com
 
 export const routes: Routes = [
     {path: "", redirectTo: "vagas", pathMatch: 'full'},
-    {path: "vagas", component: VagasListComponent},
     {path: "login", component: LoginComponent},
-    {path: "admin", component: PrincipalComponent,children:[
+    {path: "", component: PrincipalComponent,children:[
         {path: "candidato", component: CandidatosListComponent},
         {path: "candidato/new", component: CandidatosFormComponent},
         {path: "candidato/edit/:id", component: CandidatosFormComponent},
