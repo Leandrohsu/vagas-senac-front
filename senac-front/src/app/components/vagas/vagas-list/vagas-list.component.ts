@@ -16,7 +16,7 @@ export class VagasListComponent {
 
   lista: Vagas[] = [];
 
-  VagasService = inject(VagasService);
+  vagasService = inject(VagasService);
         constructor(){
           this.findAll();
         }
@@ -34,15 +34,14 @@ findAll(){
 
 }
 
-delete(vagas: Vagas){
-  let indice = this.lista.findIndex(x => {return x.id == vagas.id});
-  if(confirm('Deseja deletar?')){
-    this.VagasService.deleteById(vagas.id).subscribe({
-      next: (mensagem) => {
+delete(vagas: Vagas) {
+  if (confirm('Deseja deletar?')) {
+    this.vagasService.deleteById(vagas.id).subscribe({
+      next: (mensagem: string) => {
         alert(mensagem);
         this.findAll();
       },
-      error: (erro) => {
+      error: (erro: any) => {
         alert('Deu erro!');
       }
     });
