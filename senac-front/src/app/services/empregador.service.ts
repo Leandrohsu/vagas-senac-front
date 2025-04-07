@@ -31,15 +31,17 @@ export class EmpregadorService {
   update(empregador: Empregador, id: number): Observable<string> {
     return this.http.put<string>(this.API+'/update/'+id, empregador, {responseType: 'text' as 'json'})
   }
+  
   findByNomeFantasia(nomeFantasia: string, ): Observable<Empregador[]> {
     let pars = new HttpParams().set('nome', nomeFantasia)
     return this.http.get<Empregador[]>(this.API + '/findByNomeFantasia');
 
   }
 
-  buscarPorEmail(email: string): Observable<Empregador[]>{
-    let pars = new HttpParams().set('email', email);
-    return this.http.get<Empregador[]>(this.API+'/buscarPorEmail',{params:pars});
+  findByCnpj(cnpj: string): Observable<Empregador[]>{
+    let pars = new HttpParams()
+    .set('cnpj', cnpj);
+    return this.http.get<Empregador[]>(this.API+'/findByCnpj',{params:pars});
 
   }
 }

@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class CandidatoService {
 
-  http = inject(HttpClient);
+    http = inject(HttpClient);
     API = 'http://localhost:8080/api/candidato';
 
     constructor() { }
@@ -32,9 +32,11 @@ export class CandidatoService {
     update(candidato: Candidato, id: number): Observable<string> {
       return this.http.put<string>(this.API+'/update/'+id, candidato, {responseType: 'text' as 'json'})
     }
-    buscarPorNome(nome: string): Observable<Candidato[]>{
-      let pars = new HttpParams().set('nome', nome);
-      return this.http.get<Candidato[]>(this.API+'/buscarPorNome',{params:pars});
+    findByCpf(cpf: string): Observable<Candidato[]>{
+      let pars = new HttpParams()
+      .set('cpf', cpf);
+
+      return this.http.get<Candidato[]>(this.API+'/findByCpf',{params:pars});
 
     }
 }
