@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class CandidatoService {
 
-  http = inject(HttpClient);
+    http = inject(HttpClient);
     API = 'http://localhost:8080/api/candidato';
 
     constructor() { }

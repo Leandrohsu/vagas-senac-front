@@ -32,10 +32,50 @@ export class VagasService {
   update(vagas: Vagas, id: number): Observable<string> {
     return this.http.put<string>(this.API+'/update/'+id, vagas, {responseType: 'text' as 'json'})
   }
-  buscarPorNome(nome: string): Observable<Vagas[]>{
-    let pars = new HttpParams().set('nome', nome);
-    return this.http.get<Vagas[]>(this.API+'/buscarPorNome',{params:pars});
 
+  findByTitulo(titulo: string): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('titulo', titulo);
+    return this.http.get<Vagas[]>(this.API+'/findByTitulo',{params:pars});
   }
+
+  findByRequisito(requisito: string): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('requisito', requisito);
+    return this.http.get<Vagas[]>(this.API+'/findByRequisito',{params:pars});
+  }
+
+  findBySalarioBetween(requisito: string): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('salario1', requisito)
+    .set('salario2', requisito);
+    return this.http.get<Vagas[]>(this.API+'/findByRequisito',{params:pars});
+  }
+
+  findBySetor(setor: string): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('setor', setor);
+    return this.http.get<Vagas[]>(this.API+'/findBySetor',{params:pars});
+  }
+
+  findByDataAnuncio(dataAnuncio: LocalDate): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('dataAnuncio', dataAnuncio);
+    return this.http.get<Vagas[]>(this.API+'/findByDataAnuncio',{params:pars});
+  }
+
+  findByTipo(tipo: string): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('tipo', tipo);
+    return this.http.get<Vagas[]>(this.API+'/findByTipo',{params:pars});
+  }
+
+  findByNivelExperiencia(nivelExperiencia: string): Observable<Vagas[]>{
+    let pars = new HttpParams()
+    .set('nivelExperiencia', nivelExperiencia);
+    return this.http.get<Vagas[]>(this.API+'/findByNivelExperiencia',{params:pars});
+  }
+
+
 
 }
