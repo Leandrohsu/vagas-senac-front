@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { MenuComponent } from '../../layout/menu/menu.component';
 import { Vagas } from '../../../models/vagas';
 import { VagasService } from '../../../services/vagas.service';
 
