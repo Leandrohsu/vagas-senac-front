@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { Vagas } from '../../../models/vagas';
 import { VagasService } from '../../../services/vagas.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,7 +28,7 @@ findAll(){
       this.lista = listaRetornada;
     },
     error: (erro) => {
-      alert('Deu erro!');
+      Swal.fire(erro.error, 'Deu erro ao tentar encontrar tudo em vagaslist', 'error');
     }
   });
 
@@ -41,7 +42,7 @@ delete(vagas: Vagas) {
         this.findAll();
       },
       error: (erro: any) => {
-        alert('Deu erro!');
+        Swal.fire(erro.error, 'Deu erro ao tentar deletar em vagaslist', 'error');
       }
     });
   }

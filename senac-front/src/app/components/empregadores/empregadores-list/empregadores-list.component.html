@@ -1,1 +1,55 @@
-<p>empregadores-list works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 azul">
+
+            <div class="card">
+                <div class="card-body">
+            <h1>Empregador</h1><br>
+          
+                <div class="alinharADireita">
+                        <a href="empregador/new" class="btn btn-success btn-rounded" mdbRippled>
+                            <i class="fas fa-plus fa-sm"></i> Novo
+                        </a>
+                </div>
+            
+                            
+                <table class="table">
+                    
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">RAZÃO SOCIAL</th>
+                        <th scope="col">CNPJ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @for (empregador of lista; track $index) {
+                        <tr>
+                            <td>{{empregador.id}}</td>
+                            <td>{{empregador.nome}}</td>
+                            <td>{{empregador.razaoSocial}}</td>
+                            <td>{{empregador.cnpj}}</td>
+                            <td class="alinharADireita">
+                                    <a href="empregador/edit/{{empregador.id}}" class="btn btn-primary btn-rounded"
+                                        mdbRippled>
+                                        <i class="fas fa-pencil fa-sm"></i>
+                                    </a>
+                                    <button (click)="delete(empregador)" class="btn btn-danger btn-rounded" mdbRippled>
+                                        <i class="fas fa-trash fa-sm"></i>
+                                    </button>
+                                
+                                </td>
+                            </tr>
+                        }
+                   
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+

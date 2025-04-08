@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VagasService } from '../../../services/vagas.service';
 import { FormsModule } from '@angular/forms';
 import { Empregador } from '../../../models/empregador';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class VagasFormComponent {
         this.vagas = vagasRetorno;
       },
       error: (erro) => {
-        alert('Deu erro!');
+        Swal.fire(erro.error, 'Deu erro ao tentar encontrar pelo id em vagasform', 'error');
       }
     });
 
@@ -58,7 +59,7 @@ export class VagasFormComponent {
           this.roteador.navigate(['admin/vagas']);
         },
         error: (erro) => {
-          alert('Deu erro!');
+          Swal.fire(erro.error, 'Deu erro ao tentar dar update em vagasform', 'error');
         }
       });
 
