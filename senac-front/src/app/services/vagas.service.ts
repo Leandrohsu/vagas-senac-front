@@ -58,7 +58,7 @@ export class VagasService {
     return this.http.get<Vagas[]>(this.API+'/findBySetor',{params:pars});
   }
 
-  findByDataAnuncio(dataAnuncio: LocalDate): Observable<Vagas[]>{
+  findByDataAnuncio(dataAnuncio: string): Observable<Vagas[]>{
     let pars = new HttpParams()
     .set('dataAnuncio', dataAnuncio);
     return this.http.get<Vagas[]>(this.API+'/findByDataAnuncio',{params:pars});

@@ -1,12 +1,15 @@
+import { Empregador } from "./empregador";
+
 export class Vagas {
     id!: number;
     titulo!: string;
     descricao!: string;
     salario!: string;
-    requisitos!: string;
+    requisito!: string;
     setor!: string;
     tipo!: string;
     dataAnuncio!: string;
     status!: boolean;
     nivelExperiencia!: string;
+    empregador!: Empregador;
 }
