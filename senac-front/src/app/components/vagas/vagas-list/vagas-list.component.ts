@@ -28,7 +28,7 @@ findAll(){
       this.lista = listaRetornada;
     },
     error: (erro) => {
-      Swal.fire(erro.error, 'Deu erro ao tentar encontrar tudo em vagaslist', 'error');
+      Swal.fire(erro.error);
     }
   });
 
@@ -42,7 +42,7 @@ delete(vagas: Vagas) {
         this.findAll();
       },
       error: (erro: any) => {
-        Swal.fire(erro.error, 'Deu erro ao tentar deletar em vagaslist', 'error');
+        Swal.fire(erro.error);
       }
     });
   }

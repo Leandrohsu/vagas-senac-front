@@ -32,7 +32,7 @@ findById(id: number){
       this.candidato = candidatoRetorno;
     },
     error: (erro) => {
-      alert('Deu erro na hora de encontrar um id em candidatoform');
+      alert('Deu erro na  de encontrar um id em candidatoform');
     }
   });
 

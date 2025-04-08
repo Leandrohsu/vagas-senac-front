@@ -31,7 +31,7 @@ findById(id: number){
       this.empregador = empregadoRetorno;
     },
     error: (erro) => {
-      alert('Deu erro na hora de encontrar um id em empregadoresform');
+      alert(erro.error);
     }
   });
 
@@ -46,7 +46,7 @@ save(){
         this.roteador.navigate(['admin/empregador']);
       },
       error: (erro) => {
-        alert('Deu erro na hora de dar update em empregadoresform');
+        alert(erro.error);
       }
     });
 
