@@ -9,18 +9,53 @@
   
   
             <form #formulario="ngForm">
-  
-              Nome:<br>
-            <input  required [(ngModel)]="empregador.nome" type="text" class="form-control" name="nome">
-              <br>
+
             Razão social:<br>
             <input   [(ngModel)]="empregador.razaoSocial" type="text" class="form-control" name="razao">
-              
-              <br />
+              Nome Fantasia<br>
+              <input   [(ngModel)]="empregador.nomeFantasia" type="text" class="form-control" name="razao">
               CNPJ:<br>
             <input   [(ngModel)]="empregador.cnpj" type="text" class="form-control" name="cnpj">
-              
-              <br />
+
+              <br>
+              rua
+              <input   [(ngModel)]="enderecoTemp.rua" type="text" class="form-control" name="rua">
+
+              estado
+              <input   [(ngModel)]="enderecoTemp.estado" type="text" class="form-control" name="estado">
+              cidade
+              <input   [(ngModel)]="enderecoTemp.cidade" type="text" class="form-control" name="cidade">
+              cep
+              <input   [(ngModel)]="enderecoTemp.cep" type="text" class="form-control" name="cep">
+              numero
+              <input   [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
+
+              @if(empregador.id > 0){
+              <button type="button" (click)="incluirEndereco()" class="btn btn-success">Add Ende</button>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <td>Rua</td>
+                    <td>Número</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (endereco of empregador.enderecos; track $index) {
+                  <tr>
+                    <th>{{endereco.rua}}</th>
+                    <th>{{endereco.numero}}</th>
+                  </tr>
+                  <button (click)="deletarEndereco(endereco)"  [disabled]="!formulario.valid" class="btn btn-danger">deletar</button>
+                  }
+                  
+                </tbody>
+                
+              </table>
+            }
+
+
+
 
               <button (click)="save()"  [disabled]="!formulario.valid" class="btn btn-success">Salvar</button>
             </form>

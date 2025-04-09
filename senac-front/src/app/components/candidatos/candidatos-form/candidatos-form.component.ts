@@ -32,7 +32,7 @@ findById(id: number){
       this.candidato = candidatoRetorno;
     },
     error: (erro) => {
-      alert('Deu erro na hora de encontrar um id em candidatoform');
+      alert(erro.error);
     }
   });
 
@@ -47,7 +47,7 @@ save(){
         this.roteador.navigate(['admin/candidato']);
       },
       error: (erro) => {
-        alert('Deu erro na hora dar update no candidatoform');
+        alert(erro.error);
       }
     });
 
