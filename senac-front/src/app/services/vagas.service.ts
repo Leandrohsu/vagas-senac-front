@@ -49,7 +49,7 @@ export class VagasService {
     let pars = new HttpParams()
     .set('salario1', requisito)
     .set('salario2', requisito);
-    return this.http.get<Vagas[]>(this.API+'/findByRequisito',{params:pars});
+    return this.http.get<Vagas[]>(this.API+'/findBySalario',{params:pars});
   }
 
   findBySetor(setor: string): Observable<Vagas[]>{

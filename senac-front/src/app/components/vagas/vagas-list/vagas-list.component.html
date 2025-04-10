@@ -1,19 +1,19 @@
 <div class="col-1"></div>
 
-<div class="container">
+<div class="container" style="margin-top: 60px;">
   <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         
       </div>
       
       <div class="col-6">
-        <form class="d-flex input-group w-auto">
+        <form (ngSubmit)="buscar()" class="d-flex input-group w-auto">
           <input
             type="search"
             class="form-control rounded"
-            placeholder="Busque por vaga, salario ou cidade"
-            aria-label="Search"
-            aria-describedby="search-addon"
+            placeholder="Busque por vaga, salario ou setor"
+            name="termo"
+            [(ngModel)]="termoBusca"
           />
           <span class="input-group-text text-white border-0" id="search-addon">
             <i class="fas fa-search"></i>
@@ -23,7 +23,7 @@
         
       </div>
        
-      <div class="col-4">
+      <div class="col-2">
         
       </div>
     </div>
@@ -33,36 +33,32 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         
       </div>
       
       <div class="col-4">
-        <div class="card">
-          <!-- adicionar a opção de por a imagem depois, foco em mostrar o titulo e desc primeiro -->
-          <!-- <img src="" class="card-img-top" alt="Fissure in Sandstone"/> -->
+        <div class="card mt-3">
           <div class="card-body">
-            <thead>
-              <tr>
-                  <th scope="col">Titulo</th>
-                  <th scope="col">Descrição</th>
-              </tr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Descrição</th>
+                  <th>Salario is W.I.P</th>
+                </tr>
               </thead>
-        
               <tbody>
-                <!-- @for (vagas of lista; track $index) {
-                    <tr>
-                        <td>{{vagas.titulo}}</td>
-                        <td>{{vagas.descricao}}</td>
-              
-                        <td class="alinharADireita">
-                           
-                        </td>
-                    </tr>
-                    } -->
-               
-                </tbody>
-            <a href="https://youtube.com" class="btn btn-primary">Apertar o botão</a>
+                <tr *ngFor="let vaga of lista">
+                  <td>{{ vaga.titulo }}</td>
+                  <td>{{ vaga.descricao }}</td>
+                  <!-- <td>{{ vaga.salario }}</td> -->
+                </tr>
+                <tr *ngIf="lista.length === 0">
+                  <td colspan="2">Nenhuma vaga encontrada.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         
