@@ -10,10 +10,10 @@ import { Endereco } from '../../../models/endereco';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './empregadores-form.component.html',
-  styleUrl: './empregadores-form.component.scss',
+  styleUrl: './empregadores-form.component.scss'
 })
 export class EmpregadoresFormComponent {
-  empregador: Empregador = new Empregador();
+ empregador: Empregador = new Empregador();
   rotaAtivida = inject(ActivatedRoute);
   roteador = inject(Router);
   empregadoService = inject(EmpregadorService);
@@ -26,7 +26,7 @@ constructor(){
     this.findById(id);
   }
 }
- findById(id: number){
+findById(id: number){
 
   this.empregadoService.findById(id).subscribe({
     next: (empregadoRetorno) => {
@@ -34,59 +34,54 @@ constructor(){
     },
     error: (erro) => {
       alert(erro.error);
-
     }
+  });
+
+}
+
+save(){
+  if(this.empregador.id > 0){
+    // UPDATE
+    this.empregadoService.update(this.empregador, this.empregador.id).subscribe({
+      next: (mensagem) => {
+        alert(mensagem);
+        this.roteador.navigate(['admin/empregador']);
+      },
+      error: (erro) => {
+        alert(erro.error);
+      }
+    });
+
+
+  }else{
+    // SAVE
+    this.empregadoService.save(this.empregador).subscribe({
+      next: (mensagem) => {
+        alert(mensagem);
+        this.roteador.navigate(['admin/vagas']);
+      },
+      error: (erro) => {
+        alert(erro.error);
+      }
+    });
+
+
   }
-  save() {
-    if (this.empregador.id > 0) {
-      // UPDATE
-      this.empregadoService
-        .update(this.empregador, this.empregador.id)
-        .subscribe({
-          next: (mensagem) => {
-            alert(mensagem);
-            this.roteador.navigate(['admin/empregador']);
-          },
-          error: (erro) => {
-            alert(erro.error);
-          },
-        });
-    } else {
-      this.empregador.enderecos = [];
-      this.incluirEndereco(true);
-      console.log(this.empregador);
-      // SAVE
-      this.empregadoService.save(this.empregador).subscribe({
-        next: (mensagem) => {
-          alert(mensagem);
-          this.roteador.navigate(['vagas']);
-        },
-        error: (erro) => {
-          alert(erro.error);
-        },
-      });
-    }
-  }
+}
+incluirEndereco(salvando = false){
+  if(this.empregador.enderecos == null)
+    this.empregador.enderecos = [];
 
-  incluirEndereco(salvando = false){
-    if(this.empregador.enderecos == null)
-      this.empregador.enderecos = [];
+  let endClone = Object.assign({}, this.enderecoTemp);
+  this.empregador.enderecos.push(endClone);
 
-    let endClone = Object.assign({}, this.enderecoTemp);
-    this.empregador.enderecos.push(endClone);
+  if(!salvando)
+    this.enderecoTemp = new Endereco();
+}
 
-    if(!salvando)
-      this.enderecoTemp = new Endereco();
-  }
+deletarEndereco(endereco: Endereco){
+  let indice = this.empregador.enderecos.findIndex(x =>{return x.id == endereco.id});
+  this.empregador.enderecos.splice(indice,1);
 
-  deletarEndereco(endereco: Endereco){
-    let indice = this.empregador.enderecos.findIndex(x =>{return x.id == endereco.id});
-    this.empregador.enderecos.splice(indice,1);
-  
-  }
-
-
-
-
-
+}
 }

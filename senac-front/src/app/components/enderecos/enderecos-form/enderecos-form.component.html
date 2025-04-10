@@ -1,1 +1,33 @@
-<p>enderecos-form works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-4"></div>
+  
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body centralizar">
+            <h2>Cadastro de endereço</h2>
+  
+  
+            <form #formulario="ngForm">
+              rua
+              <input   [(ngModel)]="endereco.rua" type="text" class="form-control" name="rua">
+
+              estado
+              <input   [(ngModel)]="endereco.estado" type="text" class="form-control" name="estado">
+              cidade
+              <input   [(ngModel)]="endereco.cidade" type="text" class="form-control" name="cidade">
+              cep
+              <input   [(ngModel)]="endereco.cep" type="text" class="form-control" name="cep">
+              numero
+              <input   [(ngModel)]="endereco.numero" type="text" class="form-control" name="numero">
+              
+              <button (click)="save()"  [disabled]="!formulario.valid" class="btn btn-success">Salvar</button>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-4"></div>
+    </div>
+  </div>
