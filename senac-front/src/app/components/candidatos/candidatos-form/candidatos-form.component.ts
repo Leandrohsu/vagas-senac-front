@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CandidatoService } from '../../../services/candidato.service';
 import { Candidato } from '../../../models/candidato';
+import { Endereco } from '../../../models/endereco';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class CandidatosFormComponent {
   rotaAtivida = inject(ActivatedRoute);
   roteador = inject(Router);
   candidatoService = inject(CandidatoService);
+  enderecoTemp = new Endereco();
 
 
 constructor(){
@@ -32,10 +34,9 @@ findById(id: number){
       this.candidato = candidatoRetorno;
     },
     error: (erro) => {
-      alert('Deu erro na  de encontrar um id em candidatoform');
-    }
-  });
 
+      alert(erro.error);
+    }
 }
 
 save(){
@@ -47,12 +48,15 @@ save(){
         this.roteador.navigate(['admin/candidato']);
       },
       error: (erro) => {
-        alert('Deu erro na hora dar update no candidatoform');
+        alert(erro.error);
       }
     });
 
 
   }else{
+    this.candidato.enderecos = [];
+      this.incluirEndereco(true);
+      console.log(this.candidato);
     // SAVE
     this.candidatoService.save(this.candidato).subscribe({
       next: (mensagem) => {
@@ -67,4 +71,24 @@ save(){
 
   }
 }
+
+incluirEndereco(salvando = false){
+    if(this.candidato.enderecos == null)
+      this.candidato.enderecos = [];
+
+    let endClone = Object.assign({}, this.enderecoTemp);
+    this.candidato.enderecos.push(endClone);
+
+    if(!salvando)
+      this.enderecoTemp = new Endereco();
+  }
+
+  deletarEndereco(endereco: Endereco){
+    let indice = this.candidato.enderecos.findIndex(x =>{return x.id == endereco.id});
+    this.candidato.enderecos.splice(indice,1);
+  
+  }
+
+
+
 }
