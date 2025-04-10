@@ -1,26 +1,27 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Vagas } from '../../../models/vagas';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VagasService } from '../../../services/vagas.service';
 import { FormsModule } from '@angular/forms';
 import { Empregador } from '../../../models/empregador';
 import Swal from 'sweetalert2';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
 
 @Component({
   selector: 'app-vagas-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,MdbModalModule],
   templateUrl: './vagas-form.component.html',
   styleUrl: './vagas-form.component.scss'
 })
 export class VagasFormComponent {
 
-  vagas: Vagas = new Vagas();
+  @Input("vagas") vagas: Vagas = new Vagas();
   rotaAtivida = inject(ActivatedRoute);
   roteador = inject(Router);
   vagasService = inject(VagasService);
-
+  
   constructor(){
     let id = this.rotaAtivida.snapshot.params['id'];
     if(id){

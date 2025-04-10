@@ -38,6 +38,11 @@
       </div>
       
       <div class="col-4">
+        <div class="alinharADireita" style="margin-left: 250px; margin-top: 40px;">
+          <a (click)="new()" class="btn btn-success btn-rounded" mdbRippled>
+              <i class="fas fa-plus fa-sm"></i> Novo
+          </a>
+      </div>
         <div class="card mt-3">
           <div class="card-body">
             <table class="table">
@@ -49,14 +54,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let vaga of lista">
+                @for (vaga of lista; track $index){
+                <tr>
                   <td>{{ vaga.titulo }}</td>
                   <td>{{ vaga.descricao }}</td>
                   <!-- <td>{{ vaga.salario }}</td> -->
                 </tr>
-                <tr *ngIf="lista.length === 0">
-                  <td colspan="2">Nenhuma vaga encontrada.</td>
-                </tr>
+              }
+                @if(lista.length == 0){
+                  <tr>
+                    <td colspan="2">Nenhuma vaga encontrada.</td>
+                  </tr>
+                }
+                
               </tbody>
             </table>
           </div>
@@ -71,7 +81,23 @@
 </div>
 
 
+<ng-template #modalVagasForm>
 
+  <div class="modal-header">
+      @if(vagasEdit.id > 0){
+          <h5 class="modal-title" id="exampleModalLabel">Editar vaga</h5>
+      }@else {
+          <h5 class="modal-title" id="exampleModalLabel">Novo vaga</h5>  
+      }
+      <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+  <div class="modal-body">
+
+      <app-vagas-form [vagas]="vagasEdit" (meuEvento)="meuEventoTratamento($event)"></app-vagas-form>
+
+  </div>
+
+</ng-template>
 
 
 

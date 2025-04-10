@@ -1,16 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { Vagas } from '../../../models/vagas';
 import { VagasService } from '../../../services/vagas.service';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { VagasFormComponent } from '../vagas-form/vagas-form.component';
 
 
 @Component({
   selector: 'app-vagas-list',
   standalone: true,
-  imports: [MdbCollapseModule,FormsModule,CommonModule],
+  imports: [MdbCollapseModule,FormsModule,VagasFormComponent,MdbModalModule],
   templateUrl: './vagas-list.component.html',
   styleUrl: './vagas-list.component.scss'
 })
@@ -18,6 +19,12 @@ export class VagasListComponent {
 
   termoBusca: string = '';
   lista: Vagas[] = [];
+
+  vagasEdit!: Vagas;
+
+  @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>; //referência ao template da modal
+  modalService = inject(MdbModalService); //para abrir a modal
+  modalRef!: MdbModalRef<any>; //vc conseguir fechar a modal depois
 
   vagasService = inject(VagasService);
         constructor(){
@@ -81,6 +88,22 @@ buscar(){
     this.lista = [];
   });
 }
+
+new(){ 
+  this.vagasEdit = new Vagas(); 
+  this.modalRef = this.modalService.open(this.modalVagasForm, { modalClass: 'modal-xl'});
+}
+
+edit(vagas: Vagas){
+  this.vagasEdit = vagas; 
+  this.modalRef = this.modalService.open(this.modalVagasForm, { modalClass: 'modal-xl'});
+}
+
+meuEventoTratamento(mensagem:any){
+  this.findAll();
+  this.modalRef.close();
+}
+
 }
 
 

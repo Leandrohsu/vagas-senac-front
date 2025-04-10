@@ -37,6 +37,7 @@ findById(id: number){
 
       alert(erro.error);
     }
+  });
 }
 
 save(){
