@@ -39,33 +39,34 @@ findById(id: number){
 
 }
 
-save(){
-  if(this.empregador.id > 0){
+save() {
+  if (this.empregador.id > 0) {
     // UPDATE
-    this.empregadoService.update(this.empregador, this.empregador.id).subscribe({
-      next: (mensagem) => {
-        alert(mensagem);
-        this.roteador.navigate(['admin/empregador']);
-      },
-      error: (erro) => {
-        alert(erro.error);
-      }
-    });
-
-
-  }else{
+    this.empregadoService
+      .update(this.empregador, this.empregador.id)
+      .subscribe({
+        next: (mensagem) => {
+          alert(mensagem);
+          this.roteador.navigate(['admin/empregador']);
+        },
+        error: (erro) => {
+          alert(erro.error);
+        },
+      });
+  } else {
+    this.empregador.enderecos = [];
+    this.incluirEndereco(true);
+    console.log(this.empregador);
     // SAVE
     this.empregadoService.save(this.empregador).subscribe({
       next: (mensagem) => {
         alert(mensagem);
-        this.roteador.navigate(['admin/vagas']);
+        this.roteador.navigate(['vagas']);
       },
       error: (erro) => {
         alert(erro.error);
-      }
+      },
     });
-
-
   }
 }
 incluirEndereco(salvando = false){
