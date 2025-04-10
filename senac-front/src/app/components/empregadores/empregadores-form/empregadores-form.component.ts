@@ -19,23 +19,24 @@ export class EmpregadoresFormComponent {
   empregadoService = inject(EmpregadorService);
   enderecoTemp = new Endereco();
 
-  constructor() {
-    let id = this.rotaAtivida.snapshot.params['id'];
-    if (id) {
-      this.findById(id);
+
+constructor(){
+  let id = this.rotaAtivida.snapshot.params['id'];
+  if(id){
+    this.findById(id);
+  }
+}
+ findById(id: number){
+
+  this.empregadoService.findById(id).subscribe({
+    next: (empregadoRetorno) => {
+      this.empregador = empregadoRetorno;
+    },
+    error: (erro) => {
+      alert(erro.error);
+
     }
   }
-  findById(id: number) {
-    this.empregadoService.findById(id).subscribe({
-      next: (empregadoRetorno) => {
-        this.empregador = empregadoRetorno;
-      },
-      error: (erro) => {
-        alert(erro.error);
-      },
-    });
-  }
-
   save() {
     if (this.empregador.id > 0) {
       // UPDATE

@@ -34,10 +34,9 @@ findById(id: number){
       this.candidato = candidatoRetorno;
     },
     error: (erro) => {
+
       alert(erro.error);
     }
-  });
-
 }
 
 save(){

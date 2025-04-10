@@ -34,7 +34,7 @@ export class VagasFormComponent {
         this.vagas = vagasRetorno;
       },
       error: (erro) => {
-        Swal.fire(erro.error, 'Deu erro ao tentar encontrar pelo id em vagasform', 'error');
+        Swal.fire(erro.error);
       }
     });
 
@@ -59,7 +59,7 @@ export class VagasFormComponent {
           this.roteador.navigate(['admin/vagas']);
         },
         error: (erro) => {
-          Swal.fire(erro.error, 'Deu erro ao tentar dar update em vagasform', 'error');
+          Swal.fire(erro.error);
         }
       });
 

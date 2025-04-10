@@ -35,7 +35,7 @@ export class EmpregadoresListComponent {
         this.lista = listaRetornada;
       },
       error: (erro) => {
-        Swal.fire(erro.error, 'Deu erro ao encontrar tudo em empregadorlist', 'error');
+        Swal.fire(erro.error);
       }
     });
   
@@ -57,7 +57,7 @@ export class EmpregadoresListComponent {
             this.findAll();
           },
           error: (erro) => {
-            Swal.fire(erro.error, 'Deu erro ao tentar deletar em empregadorlist', 'error');
+            Swal.fire(erro.error);
           }
         });
         
