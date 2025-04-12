@@ -5,6 +5,29 @@
             <div class="card">
                 <div class="card-body">
             <h1>Candidatos</h1><br>
+
+            
+            <div class="col-6">
+                <form (ngSubmit)="buscarPorCpf()" class="d-flex input-group w-auto">
+                  <input
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="Busque por cpf"
+                    name="termo"
+                    [(ngModel)]="termoBusca"
+                
+                    
+                  />
+                  <span class="input-group-text text-white border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </form>
+
+
+
+
+
+
           
                 <div class="alinharADireita">
                         <a href="candidato/new" class="btn btn-success btn-rounded" mdbRippled>
