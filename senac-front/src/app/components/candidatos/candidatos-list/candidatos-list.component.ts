@@ -20,10 +20,6 @@ lista: Candidato[] = [];
   pesquisa: string = "";
   CandidatoEdit!: Candidato;
   termoBusca: string = '';
-
-
-
-
   candidatoService = inject(CandidatoService);
   constructor(){
     this.findAll();
@@ -71,12 +67,12 @@ lista: Candidato[] = [];
 
   buscarPorCpf() {
     const termo = this.termoBusca?.trim();
-  
+
     if (!termo) {
       this.findAll();
       return;
     }
-  
+
     this.candidatoService.findByCpf(termo).subscribe({
       next: (resultado) => {
         this.lista = Array.isArray(resultado) ? resultado : [resultado];
@@ -87,7 +83,7 @@ lista: Candidato[] = [];
       }
     });
   }
-  
-  
+
+
   }
-  
+
