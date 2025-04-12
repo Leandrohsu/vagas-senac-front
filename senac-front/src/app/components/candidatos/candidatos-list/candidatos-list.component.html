@@ -1,1 +1,76 @@
-<p>candidatos-list works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 azul">
+
+            <div class="card">
+                <div class="card-body">
+            <h1>Candidatos</h1><br>
+
+            
+            <div class="col-6">
+                <form (ngSubmit)="buscarPorCpf()" class="d-flex input-group w-auto">
+                  <input
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="Busque por cpf"
+                    name="termo"
+                    [(ngModel)]="termoBusca"
+                
+                    
+                  />
+                  <span class="input-group-text text-white border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </form>
+
+
+
+
+
+
+          
+                <div class="alinharADireita">
+                        <a href="candidato/new" class="btn btn-success btn-rounded" mdbRippled>
+                            <i class="fas fa-plus fa-sm"></i> Novo
+                        </a>
+                </div>
+            
+                            
+                <table class="table">
+                    
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">CPF</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @for (candidato of lista; track $index) {
+                        <tr>
+                            <td>{{candidato.id}}</td>
+                            <td>{{candidato.nome}}</td>
+                            <td>{{candidato.cpf}}</td>
+                            <td class="alinharADireita">
+                                    <a href="empregador/edit/{{candidato.id}}" class="btn btn-primary btn-rounded"
+                                        mdbRippled>
+                                        <i class="fas fa-pencil fa-sm"></i>
+                                    </a>
+                                    <button (click)="delete(candidato)" class="btn btn-danger btn-rounded" mdbRippled>
+                                        <i class="fas fa-trash fa-sm"></i>
+                                    </button>
+                                
+                                </td>
+                            </tr>
+                        }
+                   
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
