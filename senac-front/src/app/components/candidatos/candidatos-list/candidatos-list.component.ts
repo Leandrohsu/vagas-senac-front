@@ -18,8 +18,7 @@ lista: Candidato[] = [];
   pesquisa: string = "";
   CandidatoEdit!: Candidato;
 
-  modalService = inject(MdbModalService); //para abrir a modal
-  modalRef!: MdbModalRef<any>; //vc conseguir fechar a modal depois
+
 
 
   candidatoService = inject(CandidatoService);
