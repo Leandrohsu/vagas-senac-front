@@ -3,25 +3,32 @@
       <div class="col-4"></div>
   
       <div class="col-4">
-        <div class="card">
+        <div class="card" style="margin-top: 20px;">
           <div class="card-body centralizar">
-            <h2>Cadastro de endereço</h2>
+            <h2>Cadastro de Endereço</h2>
   
   
             <form #formulario="ngForm">
-              rua
+              Rua<span style="color: red">*</span><br>
               <input   [(ngModel)]="endereco.rua" type="text" class="form-control" name="rua">
-
-              estado
+              <br />
+              Estado<span style="color: red">*</span><br>
               <input   [(ngModel)]="endereco.estado" type="text" class="form-control" name="estado">
-              cidade
+              <br />
+              Cidade<span style="color: red">*</span><br>
               <input   [(ngModel)]="endereco.cidade" type="text" class="form-control" name="cidade">
-              cep
+              <br />
+              CEP<span style="color: red">*</span><br>
               <input   [(ngModel)]="endereco.cep" type="text" class="form-control" name="cep">
-              numero
+              <br />
+              Numero<br>
               <input   [(ngModel)]="endereco.numero" type="text" class="form-control" name="numero">
+              <br />
               
-              <button (click)="save()"  [disabled]="!formulario.valid" class="btn btn-success">Salvar</button>
+              <div class="text-center mt-3">
+                <button (click)="save()" [disabled]="!formulario.valid" class="btn btn-success">Salvar</button>
+              </div>
+              
             </form>
   
           </div>
