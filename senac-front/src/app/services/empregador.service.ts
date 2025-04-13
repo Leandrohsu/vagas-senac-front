@@ -33,8 +33,8 @@ export class EmpregadorService {
   }
   
   findByNomeFantasia(nomeFantasia: string, ): Observable<Empregador[]> {
-    let pars = new HttpParams().set('nome', nomeFantasia)
-    return this.http.get<Empregador[]>(this.API + '/findByNomeFantasia');
+    let params = new HttpParams().set('nomeFantasia', nomeFantasia)
+    return this.http.get<Empregador[]>(this.API + '/findByNomeFantasia', { params });
 
   }
 
