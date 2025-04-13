@@ -4,22 +4,20 @@ import { EmpregadorService } from '../../../services/empregador.service';
 import Swal from 'sweetalert2';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ContatosFormComponent } from '../../contatos/contatos-form/contatos-form.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-empregadores-list',
   standalone: true,
-  imports: [MdbModalModule],
-  templateUrl: './empregadores-list.component.html',
+  imports: [MdbModalModule,FormsModule],
+  templateUrl:'./empregadores-list.component.html',
   styleUrl: './empregadores-list.component.scss'
 })
 export class EmpregadoresListComponent {
   lista: Empregador[] = [];
   pesquisa: string = "";
   empregadorEdit!: Empregador;
-
-  @ViewChild("modalAlunoForm") modalContatosForm!: TemplateRef<any>; //referência ao template da modal
-  modalService = inject(MdbModalService); //para abrir a modal
-  modalRef!: MdbModalRef<any>; //vc conseguir fechar a modal depois
+  termoBusca: string = '';
 
 
   empregadorService = inject(EmpregadorService);
@@ -66,5 +64,34 @@ export class EmpregadoresListComponent {
       
 
   }
+
+  buscarPorNome(){
+    const termo = this.termoBusca.trim();
+    if (!termo) {
+      this.findAll();
+    };
+  
+    Promise.all([
+      this.empregadorService.findByNomeFantasia(termo).toPromise(),
+    ])
+    .then(([porCnpj]) => { //quando resolver salario, por "porSalario"
+      const todas = [
+        ...(porCnpj || []),
+
+      ];
+      const unicas = new Map<string, Empregador>();
+      todas.forEach(v => unicas.set(v.nomeFantasia + v.cnpj, v));
+  
+      this.lista = Array.from(unicas.values());
+      console.log('Lista final:', this.lista);
+    })
+    .catch(error => {
+      console.error('Erro na busca:', error);
+      console.log('Lista final:', this.lista);
+      this.lista = [];
+    });
+  }
+
+
 
 }

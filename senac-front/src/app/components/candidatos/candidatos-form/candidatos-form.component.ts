@@ -89,15 +89,5 @@ incluirEndereco(salvando = false){
     this.candidato.enderecos.splice(indice,1);
 
   }
-inscricao(idCandidato: number, idVaga: number){
-  this.candidatoService.inscricao(idCandidato, idVaga).subscribe({
-    next: () => alert("Inscrição realizada com sucesso"),
-    error: (erro) => alert(erro.error || "Erro ao realizar inscrição"),
-  });
-}
-
-
-
-
 
 }
