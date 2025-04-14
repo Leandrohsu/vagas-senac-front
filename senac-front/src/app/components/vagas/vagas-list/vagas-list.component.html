@@ -1,3 +1,4 @@
+<div class="fundo">
 <div class="col-1"></div>
 
 <div class="container" style="margin-top: 60px;">
@@ -15,9 +16,10 @@
             name="termo"
             [(ngModel)]="termoBusca"
           />
-          <span class="input-group-text text-white border-0" id="search-addon">
+
+          <a class="btn btn-white border px-3" style="left:10px" (click)="buscar()" id="search-addon" role="button">
             <i class="fas fa-search"></i>
-          </span>
+          </a>
         </form>
         
         
@@ -80,14 +82,14 @@
     </div>
 </div>
 
-
+</div>
 <ng-template #modalVagasForm>
 
   <div class="modal-header">
       @if(vagasEdit.id > 0){
-          <h5 class="modal-title" id="exampleModalLabel">Editar vaga</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
       }@else {
-          <h5 class="modal-title" id="exampleModalLabel">Novo vaga</h5>  
+          <h5 class="modal-title" id="exampleModalLabel">Nova Vaga</h5>  
       }
       <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
   </div>

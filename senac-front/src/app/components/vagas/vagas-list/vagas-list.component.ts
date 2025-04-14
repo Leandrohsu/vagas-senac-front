@@ -22,9 +22,9 @@ export class VagasListComponent {
 
   vagasEdit!: Vagas;
 
-  @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>; //referência ao template da modal
-  modalService = inject(MdbModalService); //para abrir a modal
-  modalRef!: MdbModalRef<any>; //vc conseguir fechar a modal depois
+  @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>; 
+  modalService = inject(MdbModalService); 
+  modalRef!: MdbModalRef<any>; 
 
   vagasService = inject(VagasService);
         constructor(){
@@ -38,7 +38,11 @@ findAll(){
       this.lista = listaRetornada;
     },
     error: (erro) => {
-      Swal.fire(erro.error);
+      Swal.fire({
+        icon: "error",
+        title: "Epa :c",
+        text: "Não achamos nenhuma vaga atualmente",
+      });
     }
   });
 
