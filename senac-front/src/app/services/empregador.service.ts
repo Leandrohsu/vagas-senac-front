@@ -39,9 +39,9 @@ export class EmpregadorService {
   }
 
   findByCnpj(cnpj: string): Observable<Empregador[]>{
-    let pars = new HttpParams()
-    .set('cnpj', cnpj);
-    return this.http.get<Empregador[]>(this.API+'/findByCnpj',{params:pars});
+    let params = new HttpParams().set('cnpj', cnpj)
+    
+    return this.http.get<Empregador[]>(this.API+'/findByCnpj',{params});
 
   }
 }

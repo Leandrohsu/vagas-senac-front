@@ -73,10 +73,12 @@ export class EmpregadoresListComponent {
   
     Promise.all([
       this.empregadorService.findByNomeFantasia(termo).toPromise(),
+      this.empregadorService.findByCnpj(termo).toPromise(),
     ])
-    .then(([porCnpj]) => { //quando resolver salario, por "porSalario"
+    .then(([porCnpj, porNome]) => { //quando resolver salario, por "porSalario"
       const todas = [
         ...(porCnpj || []),
+        ...(porNome || []),
 
       ];
       const unicas = new Map<string, Empregador>();
