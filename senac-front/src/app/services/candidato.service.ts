@@ -33,10 +33,9 @@ export class CandidatoService {
       return this.http.put<string>(this.API+'/update/'+id, candidato, {responseType: 'text' as 'json'})
     }
     findByCpf(cpf: string): Observable<Candidato[]>{
-      let pars = new HttpParams()
-      .set('cpf', cpf);
+      let params = new HttpParams().set('cpf', cpf);
 
-      return this.http.get<Candidato[]>(this.API+'/findByCpf',{params:pars});
+      return this.http.get<Candidato[]>(this.API+'/findByCpfContaining',{params});
     }
 
   inscricao(idCandidato: number, idVaga: number) {
