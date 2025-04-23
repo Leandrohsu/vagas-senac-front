@@ -34,14 +34,14 @@ export class EmpregadorService {
   
   findByNomeFantasia(nomeFantasia: string, ): Observable<Empregador[]> {
     let params = new HttpParams().set('nomeFantasia', nomeFantasia)
-    return this.http.get<Empregador[]>(this.API + '/findByNomeFantasia', { params });
+    return this.http.get<Empregador[]>(this.API + '/findByNomeFantasiaContaining', { params });
 
   }
 
   findByCnpj(cnpj: string): Observable<Empregador[]>{
     let params = new HttpParams().set('cnpj', cnpj)
     
-    return this.http.get<Empregador[]>(this.API+'/findByCnpj',{params});
+    return this.http.get<Empregador[]>(this.API+'/findByCnpjContaining',{params});
 
   }
 }
