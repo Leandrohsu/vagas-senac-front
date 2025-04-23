@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { VagasFormComponent } from '../vagas-form/vagas-form.component';
-
+import { CandidatoService } from '../../../services/candidato.service';
 
 @Component({
   selector: 'app-vagas-list',
@@ -27,9 +27,15 @@ export class VagasListComponent {
   modalRef!: MdbModalRef<any>; 
 
   vagasService = inject(VagasService);
-        constructor(){
+  candidatoService = inject(CandidatoService);    
+  
+  
+  
+  
+  constructor(){
           this.findAll();
         }
+
 
 
 findAll(){
@@ -107,6 +113,21 @@ meuEventoTratamento(mensagem:any){
   this.findAll();
   this.modalRef.close();
 }
+
+
+inscricao(vaga:Vagas){
+this.candidatoService.inscricao(1,vaga.id).subscribe({
+  next:mensagem=>{
+    alert("sucesso na inscricao");
+    this.findAll();
+  },error:erro=>{
+    alert("deu erro");
+  }
+})
+
+
+}
+
 
 }
 

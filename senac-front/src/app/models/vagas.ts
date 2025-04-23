@@ -1,3 +1,4 @@
+import { Candidato } from "./candidato";
 import { Empregador } from "./empregador";
 
 export class Vagas {
@@ -12,4 +13,5 @@ export class Vagas {
     status!: boolean;
     nivelExperiencia!: string;
     empregador!: Empregador;
+    candidatos!:Candidato[];
 }
