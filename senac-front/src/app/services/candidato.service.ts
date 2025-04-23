@@ -38,9 +38,11 @@ export class CandidatoService {
       return this.http.get<Candidato[]>(this.API+'/findByCpfContaining',{params});
     }
 
-  inscricao(idCandidato: number, idVaga: number) {
-    const body = { idCandidato, idVaga };
-    return this.http.put<string>(this.API+'/inscricao/'+idCandidato, idVaga, {responseType: 'text' as 'json'})
+    inscricao(idCandidato: number, idVaga: number) {
+      const params = new HttpParams()
+          .set('idCandidato', idCandidato.toString())
+          .set('idVaga', idVaga.toString());
+      return this.http.post<string>(`${this.API}/inscricao`, null, { params, responseType: 'text' as 'json' });
   }
 
 }
