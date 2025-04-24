@@ -77,13 +77,13 @@ buscar(){
 
   Promise.all([
     this.vagasService.findByTitulo(termo).toPromise(),
-      // this.vagasService.findBySalarioBetween(termo).toPromise(),
+      this.vagasService.findBySalarioBetween(termo).toPromise(),
       this.vagasService.findBySetor(termo).toPromise()
   ])
-  .then(([porTitulo, porSetor]) => { //quando resolver salario, por "porSalario"
+  .then(([porTitulo, porSetor, porSalario]) => { //quando resolver salario, por "porSalario"
     const todas = [
       ...(porTitulo || []),
-      // ...(porSalario || []),
+      ...(porSalario || []),
       ...(porSetor || [])
     ];
     const unicas = new Map<string, Vagas>();
