@@ -12,34 +12,34 @@
             <form #formulario="ngForm">
   
               Titulo da Vaga:<span style="color: red">*</span><br>
-            <input  required [(ngModel)]="vagas.titulo" type="text" class="form-control" name="nome">
+            <input  required [(ngModel)]="vagas.titulo" type="text" class="form-control" name="titulo">
               <br>
             Descricao:<span style="color: red">*</span><br>
-            <input   [(ngModel)]="vagas.descricao" type="text" class="form-control" name="cpf">
+            <input  required [(ngModel)]="vagas.descricao" type="text" class="form-control" name="descricao">
               
               <br />
               Salario:<span style="color: red">*</span><br>
-            <input   [(ngModel)]="vagas.salario" type="text" class="form-control" name="email">
+            <input   [(ngModel)]="vagas.salario" type="text" class="form-control" name="salario">
               
               <br />
               Requisito:<span style="color: red">*</span><br>
-              <input   [(ngModel)]="vagas.requisito" type="text" class="form-control" name="especialidade">
+              <input  required [(ngModel)]="vagas.requisito" type="text" class="form-control" name="requisito">
                 
                 <br />
                 Setor:<br>
-              <input   [(ngModel)]="vagas.setor" type="text" class="form-control" name="especialidade">
+              <input   [(ngModel)]="vagas.setor" type="text" class="form-control" name="setor">
                 
                 <br />
                 Tipo:<br>
-              <input   [(ngModel)]="vagas.tipo" type="text" class="form-control" name="especialidade">
+              <input   [(ngModel)]="vagas.tipo" type="text" class="form-control" name="setor">
                 
                 <br />
                 Data anuncio:<span style="color: red">*</span><br>
-                <input   [(ngModel)]="vagas.dataAnuncio" type="date" class="form-control" name="especialidade">
+                <input   [(ngModel)]="vagas.dataAnuncio" type="date" class="form-control" name="data">
                   
                   <br />
                   Nivel Experiencia:<br>
-                <input   [(ngModel)]="vagas.nivelExperiencia" type="text" class="form-control" name="especialidade">
+                <input   [(ngModel)]="vagas.nivelExperiencia" type="text" class="form-control" name="nivel">
                   
                   <br />
                   <div class="text-center mt-3">

@@ -14,27 +14,27 @@
             <input  required [(ngModel)]="empregador.nomeFantasia" type="text" class="form-control" name="nome">
               <br>
             Razão social:<span style="color: red">*</span><br>
-            <input   [(ngModel)]="empregador.razaoSocial" type="text" class="form-control" name="razao">
+            <input  required [(ngModel)]="empregador.razaoSocial" type="text" class="form-control" name="razao">
               
               <br />
               CNPJ:<span style="color: red">*</span><br>
-            <input   [(ngModel)]="empregador.cnpj" type="text" class="form-control" name="cnpj">
+            <input required pattern="^(\d{2})[\.\s]?(\d{3})[\.\s]?(\d{3})[\/\s]?(\d{4})[-\s]?(\d{2})$" [(ngModel)]="empregador.cnpj" type="text" class="form-control" name="cnpj">
               
               <br />
               Rua: <br>
-              <input   [(ngModel)]="enderecoTemp.rua" type="text" class="form-control" name="rua">
+              <input required [(ngModel)]="enderecoTemp.rua" type="text" class="form-control" name="rua">
               <br />
               Estado: <br>
-              <input   [(ngModel)]="enderecoTemp.estado" type="text" class="form-control" name="estado">
+              <input required [(ngModel)]="enderecoTemp.estado" type="text" class="form-control" name="estado">
               <br />
               Cidade: <br>
-              <input   [(ngModel)]="enderecoTemp.cidade" type="text" class="form-control" name="cidade">
+              <input  required [(ngModel)]="enderecoTemp.cidade" type="text" class="form-control" name="cidade">
               <br />
               CEP: <br>
-              <input   [(ngModel)]="enderecoTemp.cep" type="text" class="form-control" name="cep">
+              <input required [(ngModel)]="enderecoTemp.cep" type="text" class="form-control" name="cep">
               <br />
               Numero do Local: <br>
-              <input   [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
+              <input required  [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
               <br />
               
               @if(empregador.id > 0){
