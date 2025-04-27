@@ -4,9 +4,9 @@
 <div class="container" style="margin-top: 60px;">
   <div class="row">
       <div class="col-3">
-        
+
       </div>
-      
+
       <div class="col-6">
         <form (ngSubmit)="buscar()" class="d-flex input-group w-auto">
           <input
@@ -21,12 +21,12 @@
             <i class="fas fa-search"></i>
           </a>
         </form>
-        
-        
+
+
       </div>
-       
+
       <div class="col-2">
-        
+
       </div>
     </div>
 </div>
@@ -36,9 +36,9 @@
 <div class="container">
   <div class="row">
       <div class="col-3">
-        
+
       </div>
-      
+
       <div class="col-6">
         <div class="alinharADireita" style="margin-left: 250px; margin-top: 40px;">
           <a (click)="new()" class="btn btn-success btn-rounded" mdbRippled>
@@ -69,6 +69,7 @@
                    <td></td>
                    <td>
                     <button (click)="inscricao(vaga)" class="btn btn-primary">inscreva-se</button>
+                    <button (click)="mostrarModal(vaga)" class="btn btn-info">Ver inscritos</button>
                    </td>
 
                 </tr>
@@ -78,16 +79,16 @@
                     <td colspan="2">Nenhuma vaga encontrada.</td>
                   </tr>
                 }
-                
+
               </tbody>
             </table>
           </div>
         </div>
-        
+
       </div>
-       
+
       <div class="col-4">
-        
+
       </div>
     </div>
 </div>
@@ -99,7 +100,7 @@
       @if(vagasEdit.id > 0){
           <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
       }@else {
-          <h5 class="modal-title" id="exampleModalLabel">Nova Vaga</h5>  
+          <h5 class="modal-title" id="exampleModalLabel">Nova Vaga</h5>
       }
       <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
   </div>
@@ -110,7 +111,18 @@
   </div>
 
 </ng-template>
+<div *NgIf="vagaSelecionada" class="modal">
+  <div class="modal-content">
+    <h3>Inscritos na vaga: {{ vagaSelecionada?.titulo }}</h3>
+    <ul>
+      @for (cand of vagaSelecionada?.candidatos; track $index) {
+        <li>{{ cand.nome }}</li>
+      }
+    </ul>
+    <button (click)="fecharModal()" class="btn btn-secondary">Fechar</button>
+  </div>
+</div>
 
 
 
- 
+

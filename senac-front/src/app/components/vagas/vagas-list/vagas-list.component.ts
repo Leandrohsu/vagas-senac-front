@@ -22,16 +22,16 @@ export class VagasListComponent {
 
   vagasEdit!: Vagas;
 
-  @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>; 
-  modalService = inject(MdbModalService); 
-  modalRef!: MdbModalRef<any>; 
+  @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>;
+  modalService = inject(MdbModalService);
+  modalRef!: MdbModalRef<any>;
 
   vagasService = inject(VagasService);
-  candidatoService = inject(CandidatoService);    
-  
-  
-  
-  
+  candidatoService = inject(CandidatoService);
+
+
+
+
   constructor(){
           this.findAll();
         }
@@ -99,13 +99,13 @@ buscar(){
   });
 }
 
-new(){ 
-  this.vagasEdit = new Vagas(); 
+new(){
+  this.vagasEdit = new Vagas();
   this.modalRef = this.modalService.open(this.modalVagasForm, { modalClass: 'modal-xl'});
 }
 
 edit(vagas: Vagas){
-  this.vagasEdit = vagas; 
+  this.vagasEdit = vagas;
   this.modalRef = this.modalService.open(this.modalVagasForm, { modalClass: 'modal-xl'});
 }
 
@@ -126,6 +126,15 @@ this.candidatoService.inscricao(1,vaga.id).subscribe({
 })
 
 
+}
+vagaSelecionada: any = null;
+
+mostrarModal(vaga: any) {
+  this.vagaSelecionada = vaga;
+}
+
+fecharModal() {
+  this.vagaSelecionada = null;
 }
 
 
