@@ -117,7 +117,7 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
   </div>
 <div class="modal-body">
-  <div *NgIf="vagaSelecionada" class="modal">
+  <div *ngIf="vagaSelecionada" class="modal">
     <div class="modal-content">
       <h3>Inscritos na vaga: {{ vagaSelecionada?.titulo }}</h3>
       <ul>
