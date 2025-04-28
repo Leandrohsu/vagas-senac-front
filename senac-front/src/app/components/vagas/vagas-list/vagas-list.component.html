@@ -111,15 +111,22 @@
   </div>
 
 </ng-template>
-<div *NgIf="vagaSelecionada" class="modal">
-  <div class="modal-content">
-    <h3>Inscritos na vaga: {{ vagaSelecionada?.titulo }}</h3>
-    <ul>
-      @for (cand of vagaSelecionada?.candidatos; track $index) {
-        <li>{{ cand.nome }}</li>
-      }
-    </ul>
-    <button (click)="fecharModal()" class="btn btn-secondary">Fechar</button>
+<ng-template #ModalInscricaoForm>
+  <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Inscrição</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+<div class="modal-body">
+  <div *NgIf="vagaSelecionada" class="modal">
+    <div class="modal-content">
+      <h3>Inscritos na vaga: {{ vagaSelecionada?.titulo }}</h3>
+      <ul>
+        @for (cand of vagaSelecionada?.candidatos; track $index) {
+          <li>{{ cand.nome }}</li>
+        }
+      </ul>
+      <button (click)="fecharModal()" class="btn btn-secondary">Fechar</button>
+    </div>
   </div>
 </div>
 

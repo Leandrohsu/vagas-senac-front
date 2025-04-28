@@ -28,6 +28,7 @@ export class VagasListComponent {
 
   vagasService = inject(VagasService);
   candidatoService = inject(CandidatoService);
+  vagaSelecionada: any = null;
 
 
 
@@ -127,7 +128,6 @@ this.candidatoService.inscricao(1,vaga.id).subscribe({
 
 
 }
-vagaSelecionada: any = null;
 
 mostrarModal(vaga: any) {
   this.vagaSelecionada = vaga;
