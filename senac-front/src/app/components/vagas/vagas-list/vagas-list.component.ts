@@ -26,6 +26,13 @@ export class VagasListComponent {
   modalService = inject(MdbModalService);
   modalRef!: MdbModalRef<any>;
 
+
+  @ViewChild('ModalInscricaoForm') ModalInscricaoForm!: TemplateRef<any>;
+  modalRef1!: MdbModalRef<any>;
+  
+
+
+
   vagasService = inject(VagasService);
   candidatoService = inject(CandidatoService);
   vagaSelecionada: any = null;
@@ -131,10 +138,13 @@ this.candidatoService.inscricao(1,vaga.id).subscribe({
 
 mostrarModal(vaga: any) {
   this.vagaSelecionada = vaga;
+  this.modalRef = this.modalService.open(this.ModalInscricaoForm);
 }
 
+
+
 fecharModal() {
-  this.vagaSelecionada = null;
+  this.modalRef.close();
 }
 
 
