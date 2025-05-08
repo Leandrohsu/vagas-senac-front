@@ -32,7 +32,7 @@ constructor(){
     this.candidato.usuario = userVazio;
     this.candidato.usuario.role = 'CANDIDATO';
   }
-
+///t
 
 }
 findById(id: number){
