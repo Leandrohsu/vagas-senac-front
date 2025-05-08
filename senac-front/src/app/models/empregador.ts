@@ -1,3 +1,4 @@
+import { Usuario } from "../components/auth/usuario";
 import { Endereco } from "./endereco";
 
 export class Empregador {
@@ -9,5 +10,5 @@ export class Empregador {
 
     enderecos!: Endereco[];
     
-    
+    usuario!: Usuario;
 }
