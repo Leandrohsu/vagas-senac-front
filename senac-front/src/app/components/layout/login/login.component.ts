@@ -33,9 +33,7 @@ export class LoginComponent {
           this.loginService.addToken(token); //MUITO IMPORTANTE
 
         this.gerarToast().fire({ icon: "success", title: "Seja bem-vindo!" });
-        this.router.navigate(['admin/dashboard']);
-
-        this.router.navigate(['/admin/carros']);
+        this.router.navigate(['vagas']);
       },
       error: erro => {
         Swal.fire({

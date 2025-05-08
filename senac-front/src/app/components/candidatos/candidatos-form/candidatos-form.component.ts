@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CandidatoService } from '../../../services/candidato.service';
 import { Candidato } from '../../../models/candidato';
 import { Endereco } from '../../../models/endereco';
+import { Usuario } from '../../auth/usuario';
 
 
 @Component({
@@ -25,7 +26,14 @@ constructor(){
   let id = this.rotaAtivida.snapshot.params['id'];
   if(id){
     this.findById(id);
+  }else{
+    //NOVO USUÁRIO
+    let userVazio = new Usuario();
+    this.candidato.usuario = userVazio;
+    this.candidato.usuario.role = 'CANDIDATO';
   }
+///t
+
 }
 findById(id: number){
 

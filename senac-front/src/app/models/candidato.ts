@@ -1,3 +1,4 @@
+import { Usuario } from "../components/auth/usuario";
 import { Endereco } from "./endereco";
 
 export class Candidato {
@@ -7,5 +8,7 @@ export class Candidato {
     dataNascimento!: string;
 
     enderecos!: Endereco[];
+
+     usuario!: Usuario;
     
 }

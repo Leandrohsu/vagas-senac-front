@@ -35,6 +35,12 @@
               Numero do Local <br>
               <input required [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
               <br />
+             Usuário: <br>
+              <input required [(ngModel)]="candidato.usuario.username" type="text" class="form-control" name="numero">
+              <br />
+              Senha: <br>
+              <input required [(ngModel)]="candidato.usuario.password" type="password" class="form-control" name="numero">
+              <br />
 
               @if(candidato.id > 0){
                 <button type="button" (click)="incluirEndereco()" class="btn btn-success">Add Ende</button>
