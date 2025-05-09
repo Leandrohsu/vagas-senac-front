@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Empregador } from '../../../models/empregador';
 import { EmpregadorService } from '../../../services/empregador.service';
 import { Endereco } from '../../../models/endereco';
+import { Usuario } from '../../auth/usuario';
 
 @Component({
   selector: 'app-empregadores-form',
@@ -24,7 +25,17 @@ constructor(){
   let id = this.rotaAtivida.snapshot.params['id'];
   if(id){
     this.findById(id);
-  }
+  }else{
+      //NOVO USUÁRIO
+      let userVazio = new Usuario();
+      this.empregador.usuario = userVazio;
+      this.empregador.usuario.role = 'Empregador';
+    }
+
+
+
+
+
 }
 findById(id: number){
 

@@ -30,7 +30,7 @@ constructor(){
     //NOVO USUÁRIO
     let userVazio = new Usuario();
     this.candidato.usuario = userVazio;
-    this.candidato.usuario.role = 'CANDIDATO';
+    this.candidato.usuario.role = 'Candidato';
   }
 ///t
 
