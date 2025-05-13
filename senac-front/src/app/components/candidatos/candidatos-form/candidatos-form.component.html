@@ -1,82 +1,82 @@
 <div class="container">
-    <div class="row">
-      <div class="col-4"></div>
-  
-      <div class="col-4">
-        <div class="card" style="margin-top: 20px;">
-          <div class="card-body centralizar">
-            <h2>Cadastro de Candidato</h2>
-  
-  
-            <form #formulario="ngForm">
-  
-              Nome:<span style="color: red">*</span><br>
-            <input  required [(ngModel)]="candidato.nome" type="text" class="form-control" name="nome">
-            <br />
-            Data de Nascimento:<span style="color: red">*</span><br>
-            <input   required [(ngModel)]="candidato.dataNascimento" type="date" class="form-control" name="data">
-              
-              <br />
-              CPF:<span style="color: red">*</span><br>
-            <input   required pattern="^(\d{3})[\.\s]?(\d{3})[\.\s]?(\d{3})[-\s]?(\d{2})$" [(ngModel)]="candidato.cpf" type="text" class="form-control" name="cpf">
-            <br />
-            Rua
-              <input required [(ngModel)]="enderecoTemp.rua" type="text" class="form-control" name="rua">
-              <br />
-              Estado <br>
-              <input required [(ngModel)]="enderecoTemp.estado" type="text" class="form-control" name="estado">
-              <br />
-              Cidade <br>
-              <input  required [(ngModel)]="enderecoTemp.cidade" type="text" class="form-control" name="cidade">
-              <br />
-              CEP <br>
-              <input required [(ngModel)]="enderecoTemp.cep" type="text" class="form-control" name="cep">
-              <br />
-              Numero do Local <br>
-              <input required [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
-              <br />
-             Usuário: <br>
-              <input required [(ngModel)]="candidato.usuario.username" type="text" class="form-control" name="numero">
-              <br />
-              Senha: <br>
-              <input required [(ngModel)]="candidato.usuario.password" type="password" class="form-control" name="numero">
-              <br />
+  <div class="row">
+    <div class="col-4"></div>
 
-              @if(candidato.id > 0){
-                <button type="button" (click)="incluirEndereco()" class="btn btn-success">Add Ende</button>
-  
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <td>Rua</td>
-                      <td>Número</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @for (endereco of candidato.enderecos; track $index) {
-                    <tr>
-                      <th>{{endereco.rua}}</th>
-                      <th>{{endereco.numero}}</th>
-                    </tr>
-                    <button (click)="deletarEndereco(endereco)"  [disabled]="!formulario.valid" class="btn btn-danger">deletar</button>
-                    }
-                    
-                  </tbody>
+    <div class="col-4">
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-body centralizar">
+          <h2>Cadastro de Candidato</h2>
+
+
+          <form #formulario="ngForm">
+
+            Nome:<span style="color: red">*</span><br>
+          <input  required [(ngModel)]="candidato.nome" type="text" class="form-control" name="nome">
+          <br />
+          Data de Nascimento:<span style="color: red">*</span><br>
+          <input   required [(ngModel)]="candidato.dataNascimento" type="date" class="form-control" name="data">
+            
+            <br />
+            CPF:<span style="color: red">*</span><br>
+          <input   required pattern="^(\d{3})[\.\s]?(\d{3})[\.\s]?(\d{3})[-\s]?(\d{2})$" [(ngModel)]="candidato.cpf" type="text" class="form-control" name="cpf">
+          <br />
+          Rua
+            <input required [(ngModel)]="enderecoTemp.rua" type="text" class="form-control" name="rua">
+            <br />
+            Estado <br>
+            <input required [(ngModel)]="enderecoTemp.estado" type="text" class="form-control" name="estado">
+            <br />
+            Cidade <br>
+            <input  required [(ngModel)]="enderecoTemp.cidade" type="text" class="form-control" name="cidade">
+            <br />
+            CEP <br>
+            <input required [(ngModel)]="enderecoTemp.cep" type="text" class="form-control" name="cep">
+            <br />
+            Numero do Local <br>
+            <input required [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
+            <br />
+           Usuário: <br>
+            <input required [(ngModel)]="candidato.usuario.username" type="text" class="form-control" name="numero">
+            <br />
+            Senha: <br>
+            <input required [(ngModel)]="candidato.usuario.password" type="password" class="form-control" name="numero">
+            <br />
+
+            @if(candidato.id > 0){
+              <button type="button" (click)="incluirEndereco()" class="btn btn-success">Add Ende</button>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <td>Rua</td>
+                    <td>Número</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (endereco of candidato.enderecos; track $index) {
+                  <tr>
+                    <th>{{endereco.rua}}</th>
+                    <th>{{endereco.numero}}</th>
+                  </tr>
+                  <button (click)="deletarEndereco(endereco)"  [disabled]="!formulario.valid" class="btn btn-danger">deletar</button>
+                  }
                   
-                </table>
-              }
+                </tbody>
+                
+              </table>
+            }
 
 
-              <div class="text-center mt-3">
-                <button (click)="save()" [disabled]="!formulario.valid" class="btn btn-success">Salvar</button>
-              </div>
-              
-            </form>
-  
-          </div>
+            <div class="text-center mt-3">
+              <button (click)="save()" [disabled]="!formulario.valid" class="btn btn-success">Salvar</button>
+            </div>
+            
+          </form>
+
         </div>
       </div>
-  
-      <div class="col-4"></div>
     </div>
+
+    <div class="col-4"></div>
   </div>
+</div>
