@@ -30,9 +30,9 @@ export class LoginComponent {
       next: token => {
 
         if (token)
-          this.loginService.addToken(token); //MUITO IMPORTANTE
+          this.loginService.addToken(token); 
 
-        this.gerarToast().fire({ icon: "success", title: "Seja bem-vindo!" });
+        this.gerarToast().fire({ icon: "success", title: "Seja bem-vindo!",  position: 'bottom-end'});
         this.router.navigate(['vagas']);
       },
       error: erro => {
