@@ -44,25 +44,48 @@
         <a href="/login" class="btn btn-link px-3 me-2">
           Login
         </a>
-        <a class="btn btn-primary me-3" href="/empregador">
-          Empregadores
+        <a class="btn btn-primary me-3" href="/cadastrar">
+          Cadastro
         </a>
-        <a class="btn btn-primary me-3" href="/candidato">
-          Candidatos
-        </a>
-        <a class="btn btn-danger px-3" href="vagas/new" role="button" style="margin-right: 10px;">
-          <i class="fas fa-ice-cream"></i>
-        </a>
-        <a class="btn btn-danger px-3" href="candidato/new" role="button" style="margin-right: 10px;">
-          <i class="fas fa-glasses"></i>
-        </a>
-        <a class="btn btn-danger px-3" href="empregador/new" role="button">
-          <i class="fas fa-sun"></i>
+        
+        <a class="btn btn-dark px-3" href="https://youtu.be/ZBFPuCKfp9U" role="button">
+          <i class="far fa-question-circle"></i>
         </a>
       </div>
+      
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <!-- Dropdown -->
+            <li mdbDropdown class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdownMenuLink"
+                role="button"
+                mdbDropdownToggle
+                aria-expanded="false"
+                style="user-select: none;"
+              >
+                Dev kit
+              </a>
+              <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="/candidato">Candidato</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/empregador">Empregador</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      
     </div>
     <!-- Collapsible wrapper -->
   </div>
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+ 

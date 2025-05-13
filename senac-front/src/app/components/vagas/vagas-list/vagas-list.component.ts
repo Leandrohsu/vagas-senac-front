@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { VagasFormComponent } from '../vagas-form/vagas-form.component';
 import { CandidatoService } from '../../../services/candidato.service';
+import { Usuario } from '../../auth/usuario';
+import { jwtDecode, JwtPayload } from "jwt-decode";
+import { LoginService } from '../../auth/login.service';
 
 @Component({
   selector: 'app-vagas-list',
@@ -21,6 +24,8 @@ export class VagasListComponent {
   lista: Vagas[] = [];
 
   vagasEdit!: Vagas;
+  usuario!: Usuario; //login
+  loginService = inject(LoginService);
 
   @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>;
   modalService = inject(MdbModalService);
@@ -41,6 +46,20 @@ export class VagasListComponent {
 
 
   constructor(){
+
+    const token = localStorage.getItem('token'); // ou sessionStorage, se for o caso
+
+    if (token) {
+      const payload: any = jwtDecode(token);
+      this.usuario = {
+        id: payload.id,
+        username: payload.username,
+        password: payload.password,
+        role: payload.role
+      };
+    } else {
+      alert('Token JWT não encontrado!');
+    }
           this.findAll();
         }
 
@@ -85,13 +104,13 @@ buscar(){
 
   Promise.all([
     this.vagasService.findByTitulo(termo).toPromise(),
-      this.vagasService.findBySalarioBetween(termo).toPromise(),
+      // this.vagasService.findBySalarioBetween(termo).toPromise(),
       this.vagasService.findBySetor(termo).toPromise()
   ])
-  .then(([porTitulo, porSetor, porSalario]) => { //quando resolver salario, por "porSalario"
+  .then(([porTitulo, porSetor]) => { //quando resolver salario, por "porSalario"
     const todas = [
       ...(porTitulo || []),
-      ...(porSalario || []),
+      // ...(porSalario || []),
       ...(porSetor || [])
     ];
     const unicas = new Map<string, Vagas>();
@@ -124,7 +143,7 @@ meuEventoTratamento(mensagem:any){
 
 
 inscricao(vaga:Vagas){
-this.candidatoService.inscricao(1,vaga.id).subscribe({
+this.candidatoService.inscricao(this.usuario.id,vaga.id).subscribe({
   next:mensagem=>{
     alert("sucesso na inscricao");
     this.findAll();

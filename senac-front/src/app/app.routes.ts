@@ -11,11 +11,12 @@ import { EnderecosListComponent } from './components/enderecos/enderecos-list/en
 import { EnderecosFormComponent } from './components/enderecos/enderecos-form/enderecos-form.component';
 import { VagasListComponent } from './components/vagas/vagas-list/vagas-list.component';
 import { VagasFormComponent } from './components/vagas/vagas-form/vagas-form.component';
+import { loginGuard } from './components/auth/login.guard';
 
 export const routes: Routes = [
     {path: "", redirectTo: "vagas", pathMatch: 'full'},
     {path: "login", component: LoginComponent},
-    {path: "", component: PrincipalComponent,children:[
+    {path: "", component: PrincipalComponent,canActivate:[loginGuard],children:[
         {path: "candidato", component: CandidatosListComponent},
         {path: "candidato/new", component: CandidatosFormComponent},
         {path: "candidato/edit/:id", component: CandidatosFormComponent},

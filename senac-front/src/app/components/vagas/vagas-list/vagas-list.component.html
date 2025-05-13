@@ -41,9 +41,11 @@
 
       <div class="col-6">
         <div class="alinharADireita" style="margin-left: 250px; margin-top: 40px;">
+          @if(loginService.hasRole('Empregador')){
           <a (click)="new()" class="btn btn-success btn-rounded" mdbRippled>
               <i class="fas fa-plus fa-sm"></i> Novo
           </a>
+        }
       </div>
         <div class="card mt-3">
           <div class="card-body">
@@ -52,24 +54,21 @@
                 <tr>
                   <th>Título</th>
                   <th>Descrição</th>
-                  <th>Salario is W.I.P</th>
+                  <th>Salario</th>
                   <th>Inscricao</th>
                 </tr>
               </thead>
               <tbody>
                 @for (vaga of lista; track $index){
                 <tr>
-                  <td>{{ vaga.titulo }}
-                    <br>@for (cand of vaga.candidatos; track $index) {
-                      {{cand.nome}} <br>
-                    }
-                  </td>
+                  <td>{{ vaga.titulo }}</td>
                   <td>{{ vaga.descricao }}</td>
                   <td>{{ vaga.salario }}</td>
-                   <td></td>
                    <td>
-                    <button (click)="inscricao(vaga)" class="btn btn-primary">inscreva-se</button>
+                    <button (click)="inscricao(vaga)" class="btn btn-primary">Se candidatar</button>
+                    @if(loginService.hasRole('Empregador')){
                     <button (click)="mostrarModal(vaga)" class="btn btn-info">Ver inscritos</button>
+                    }
                    </td>
 
                 </tr>
