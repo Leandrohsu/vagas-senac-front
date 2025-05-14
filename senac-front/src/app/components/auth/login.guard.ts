@@ -21,5 +21,33 @@ export const loginGuard: CanActivateFn = (route, state) => {
     return false;
   }
 
+  //adicionar isso quando colocar a role admin e termina o site
+  
+  // if((state.url == "/empregador") && !loginService.hasRole("Admin")){
+  //   router.navigate(['/vagas']);
+
+  //   Swal.fire({
+  //     icon: "error",
+  //     imageUrl: "https://i.pinimg.com/736x/55/2b/74/552b74768b0bac7e80a954ff60c918a4.jpg",
+  //     imageWidth: 400,
+  //     imageHeight: 500,
+  //     imageAlt: "Custom image"
+  //   });
+  //   return false;
+  // }
+
+  // if((state.url == "/candidato") && !loginService.hasRole("Admin")){
+  //   router.navigate(['/vagas']);
+
+  //   Swal.fire({
+  //     icon: "error",
+  //     imageUrl: "https://i.pinimg.com/736x/55/2b/74/552b74768b0bac7e80a954ff60c918a4.jpg",
+  //     imageWidth: 400,
+  //     imageHeight: 500,
+  //     imageAlt: "Custom image"
+  //   });
+  //   return false;
+  // }
+
   return true;
 };

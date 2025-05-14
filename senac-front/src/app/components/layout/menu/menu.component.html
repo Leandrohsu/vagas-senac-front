@@ -44,7 +44,7 @@
         <a href="/login" class="btn btn-link px-3 me-2">
           Login
         </a>
-        <a class="btn btn-primary me-3" href="/cadastrar">
+        <a class="btn btn-primary me-3" (click)="abrirmodal()">
           Cadastro
         </a>
         
@@ -89,3 +89,24 @@
 </nav>
 <!-- Navbar -->
  
+<ng-template #modalEscolha>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Deseja se cadastrar como candidato ou empregador?</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+      </div>
+      
+      <div class="modal-body text-center">
+        <a class="btn btn-info me-3" href="/candidato/new">
+          Candidato
+        </a>
+        <a class="btn btn-success me-3" href="/empregador/new">
+          Empregador
+        </a>
+      </div>
+
+    </div>
+  </div>
+</ng-template>
