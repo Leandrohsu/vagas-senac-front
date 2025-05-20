@@ -12,25 +12,29 @@ import { EnderecosFormComponent } from './components/enderecos/enderecos-form/en
 import { VagasListComponent } from './components/vagas/vagas-list/vagas-list.component';
 import { VagasFormComponent } from './components/vagas/vagas-form/vagas-form.component';
 import { loginGuard } from './components/auth/login.guard';
+import { DashboardComponent } from './components/layout/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "vagas", pathMatch: 'full'},
     {path: "login", component: LoginComponent},
+    {path: "candidato/new", component: CandidatosListComponent},
+    {path: "empregador/new", component: EmpregadoresFormComponent},
     {path: "", component: PrincipalComponent,canActivate:[loginGuard],children:[
         {path: "candidato", component: CandidatosListComponent},
-        {path: "candidato/new", component: CandidatosFormComponent},
+        //{path: "candidato/new", component: CandidatosFormComponent},
         {path: "candidato/edit/:id", component: CandidatosFormComponent},
         {path: "contato", component: ContatosListComponent},
         {path: "contato/new", component: ContatosFormComponent},
         {path: "contato/edit/:id", component: ContatosFormComponent},
         {path: "empregador", component: EmpregadoresListComponent},
-        {path: "empregador/new", component: EmpregadoresFormComponent},
+        //{path: "empregador/new", component: EmpregadoresFormComponent},
         {path: "empregador/edit/:id", component: EmpregadoresFormComponent},
         {path: "endereco", component: EnderecosListComponent},
         {path: "endereco/new", component: EnderecosFormComponent},
         {path: "endereco/edit/:id", component: EnderecosListComponent},
         {path: "vagas", component: VagasListComponent},
         {path: "vagas/new", component: VagasFormComponent},
+        {path: "dashboard", component: DashboardComponent},
         {path: "vagas/edit/:id", component: VagasFormComponent}
     ]}
 
