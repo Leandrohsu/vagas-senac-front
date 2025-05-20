@@ -54,7 +54,7 @@ save(){
     this.candidatoService.update(this.candidato, this.candidato.id).subscribe({
       next: (mensagem) => {
         alert(mensagem);
-        this.roteador.navigate(['admin/candidato']);
+        this.roteador.navigate(['/candidato']);
       },
       error: (erro) => {
         alert(erro.error);
@@ -70,7 +70,7 @@ save(){
     this.candidatoService.save(this.candidato).subscribe({
       next: (mensagem) => {
         alert(mensagem);
-        this.roteador.navigate(['admin/vagas']);
+        this.roteador.navigate(['/vagas']);
       },
       error: (erro) => {
         alert(erro.error);
