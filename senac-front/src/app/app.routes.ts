@@ -17,7 +17,7 @@ import { DashboardComponent } from './components/layout/dashboard/dashboard.comp
 export const routes: Routes = [
     {path: "", redirectTo: "vagas", pathMatch: 'full'},
     {path: "login", component: LoginComponent},
-    {path: "candidato/new", component: CandidatosListComponent},
+    {path: "candidato/new", component: CandidatosFormComponent},
     {path: "empregador/new", component: EmpregadoresFormComponent},
     {path: "", component: PrincipalComponent,canActivate:[loginGuard],children:[
         {path: "candidato", component: CandidatosListComponent},
