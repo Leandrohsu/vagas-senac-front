@@ -1,11 +1,9 @@
 <div class="fundo">
-<div class="col-1"></div>
+  <div class="col-1"></div>
 
-<div class="container" style="margin-top: 60px;">
-  <div class="row">
-      <div class="col-3">
-
-      </div>
+  <div class="container" style="margin-top: 60px;">
+    <div class="row">
+      <div class="col-3"></div>
 
       <div class="col-6">
         <form (ngSubmit)="buscar()" class="d-flex input-group w-auto">
@@ -17,115 +15,109 @@
             [(ngModel)]="termoBusca"
           />
 
-          <a class="btn btn-white border px-3" style="left:10px" (click)="buscar()" id="search-addon" role="button">
+          <a
+            class="btn btn-white border px-3"
+            style="left:10px"
+            (click)="buscar()"
+            id="search-addon"
+            role="button"
+          >
             <i class="fas fa-search"></i>
           </a>
         </form>
-
-
       </div>
 
-      <div class="col-2">
-
-      </div>
+      <div class="col-2"></div>
     </div>
-</div>
+  </div>
 
-<div class="col-1"></div>
+  <div class="col-1"></div>
 
-<div class="container">
-  <div class="row">
-      <div class="col-3">
-
-      </div>
-
-      <div class="col-6">
-        <div class="alinharADireita" style="margin-left: 250px; margin-top: 40px;">
-          @if(loginService.hasRole('Empregador')){
+ <div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <div class="mb-3 d-flex justify-content-center" style="margin-top: 40px;">
+        @if(loginService.hasRole('Empregador')) {
           <a (click)="new()" class="btn btn-success btn-rounded" mdbRippled>
-              <i class="fas fa-plus fa-sm"></i> Novo
+            <i class="fas fa-plus fa-sm"></i> Novo
           </a>
         }
       </div>
-        <div class="card mt-3">
-          <div class="card-body">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Título</th>
-                  <th>Descrição</th>
-                  <th>Salario</th>
-                  <th>Inscricao</th>
-                </tr>
-              </thead>
-              <tbody>
-                @for (vaga of lista; track $index){
-                <tr>
-                  <td>{{ vaga.titulo }}</td>
-                  <td>{{ vaga.descricao }}</td>
-                  <td>{{ vaga.salario }}</td>
-                   <td>
-                    <button (click)="inscricao(vaga)" class="btn btn-primary">Se candidatar</button>
-                    @if(loginService.hasRole('Empregador')){
-                    <button (click)="mostrarModal(vaga)" class="btn btn-info">Ver inscritos</button>
-                    }
-                   </td>
 
-                </tr>
-              }
-                @if(lista.length == 0){
-                  <tr>
-                    <td colspan="2">Nenhuma vaga encontrada.</td>
-                  </tr>
-                }
 
-              </tbody>
-            </table>
+      <div class="row g-3">
+        @for (vaga of lista; track $index) {
+          <div class="col-12 col-sm-6 col-md-4 col-lg-4 d-flex">
+            <div class="card shadow-sm rounded w-100 d-flex flex-column">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title" style="white-space: normal;">{{ vaga.titulo }}</h5>
+                <p class="card-text" style="white-space: normal; word-break: break-word;">{{ vaga.descricao }}</p>
+                <p class="card-text"><strong>Salário:</strong> R$ {{ vaga.salario }}</p>
+                <div class="mt-auto">
+                  <button (click)="inscricao(vaga)" class="btn btn-primary btn-sm w-100 mb-2">Se candidatar</button>
+                  @if(loginService.hasRole('Empregador')) {
+                    <button (click)="mostrarModal(vaga)" class="btn btn-info btn-sm w-100">Ver inscritos</button>
+                  }
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        }
+
+              @if(lista.length == 0) {
+              <div class="col-12 text-center">
+                <p class="text-muted">Nenhuma vaga encontrada.</p>
+              </div>
+              }
+            </div>
 
       </div>
 
-      <div class="col-4">
-
-      </div>
+      <div class="col-4"></div>
     </div>
+  </div>
 </div>
 
-</div>
 <ng-template #modalVagasForm>
-
   <div class="modal-header">
-      @if(vagasEdit.id > 0){
-          <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
-      }@else {
-          <h5 class="modal-title" id="exampleModalLabel">Nova Vaga</h5>
-      }
-      <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    @if(vagasEdit.id > 0) {
+    <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
+    } @else {
+    <h5 class="modal-title" id="exampleModalLabel">Nova Vaga</h5>
+    }
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
   </div>
   <div class="modal-body">
-
-      <app-vagas-form [vagas]="vagasEdit" (meuEvento)="meuEventoTratamento($event)"></app-vagas-form>
-
+    <app-vagas-form
+      [vagas]="vagasEdit"
+      (meuEvento)="meuEventoTratamento($event)"
+    ></app-vagas-form>
   </div>
-
 </ng-template>
+
 <ng-template #ModalInscricaoForm>
   <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Inscrição</h5>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    <h5 class="modal-title" id="exampleModalLabel">Inscrição</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
   </div>
   <div class="modal-body">
     @if (vagaSelecionada) {
-      <h3>Inscritos na vaga: {{ vagaSelecionada?.titulo }}</h3>
-      <ul>
-        @for (cand of vagaSelecionada?.candidatos; track $index) {
-          <li>{{ cand.nome }}</li>
-        }
-      </ul>
+    <h3>Inscritos na vaga: {{ vagaSelecionada?.titulo }}</h3>
+    <ul>
+      @for (cand of vagaSelecionada?.candidatos; track $index) {
+      <li>{{ cand.nome }}</li>
+      }
+    </ul>
     }
   </div>
-
-
-
-
+</ng-template>

@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Empregador } from '../models/empregador';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class EmpregadorService {
 
   http = inject(HttpClient);
-  API = 'http://localhost:8080/api/empregador';
+  API = environment.Servidor+'/api/empregador';
 
 
   findAll(): Observable<Empregador[]>{

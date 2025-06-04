@@ -2,6 +2,7 @@ import { Vagas } from './../models/vagas';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class VagasService {
 
   http = inject(HttpClient);
-  API = 'http://localhost:8080/api/vagas';
+  API = environment.Servidor+'/api/vagas';
 
   constructor() { }
 
