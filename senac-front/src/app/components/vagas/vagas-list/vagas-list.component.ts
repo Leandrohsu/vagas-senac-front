@@ -58,7 +58,7 @@ export class VagasListComponent {
         role: payload.role
       };
     } else {
-      alert('Token JWT não encontrado!');
+      //alert('Token JWT não encontrado!');
     }
           this.findAll();
         }
