@@ -10,6 +10,7 @@ import { CandidatoService } from '../../../services/candidato.service';
 import { Usuario } from '../../auth/usuario';
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { LoginService } from '../../auth/login.service';
+import { Candidato } from '../../../models/candidato';
 
 @Component({
   selector: 'app-vagas-list',
@@ -25,6 +26,7 @@ export class VagasListComponent {
 
   vagasEdit!: Vagas;
   usuario!: Usuario; //login
+  candidato!: Candidato;
   loginService = inject(LoginService);
 
   @ViewChild("modalVagasForm") modalVagasForm!: TemplateRef<any>;
@@ -57,11 +59,30 @@ export class VagasListComponent {
         password: payload.password,
         role: payload.role
       };
+      this.findCandidatoByIdUsuario(this.usuario.id);
     } else {
       //alert('Token JWT não encontrado!');
     }
           this.findAll();
         }
+
+
+findCandidatoByIdUsuario(idUsuario:number){
+  this.candidatoService.findCandidatoByIdUsuario(idUsuario).subscribe({
+    next: (candidato) => {
+      console.log('chegou aqui');
+      this.candidato = candidato;
+    },
+    error: (erro) => {
+      Swal.fire({
+        icon: "error",
+        title: "Epa :c",
+        text: "Não achamos nenhuma vaga atualmente",
+      });
+    }
+  });
+
+}
 
 
 
@@ -143,7 +164,7 @@ meuEventoTratamento(mensagem:any){
 
 
 inscricao(vaga:Vagas){
-this.candidatoService.inscricao(this.usuario.id,vaga.id).subscribe({
+this.candidatoService.inscricao(this.candidato.id,vaga.id).subscribe({
   next:mensagem=>{
     alert("sucesso na inscricao");
     this.findAll();

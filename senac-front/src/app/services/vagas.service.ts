@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Candidato } from '../models/candidato';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,9 @@ export class VagasService {
     return this.http.get<Vagas>(this.API+'/findById/'+id)
   }
 
+  findCandidatoByIdUsuario(id: number): Observable<Candidato>{
+    return this.http.get<Candidato>(this.API+'/findCandidatoByIdUsuario/'+id)
+  }  
   deleteById(id: number): Observable<string>{
     return this.http.delete<string>(this.API+'/deleteById/'+id, {responseType: 'text' as 'json'})
   }

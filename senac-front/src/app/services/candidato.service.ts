@@ -14,6 +14,12 @@ export class CandidatoService {
 
     constructor() { }
 
+
+
+  findCandidatoByIdUsuario(id: number): Observable<Candidato>{
+    return this.http.get<Candidato>(this.API+'/findCandidatoByIdUsuario/'+id)
+  }  
+
     findAll(): Observable<Candidato[]>{
       return this.http.get<Candidato[]>(this.API+'/findAll');
     }
