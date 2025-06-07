@@ -53,10 +53,53 @@
         </a>
       </div>
       
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="d-flex align-items-center">
+            @if (loginService.getUsuarioLogado())
+            {
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <ul class="navbar-nav">
-            <!-- Dropdown -->
+
+            <li mdbDropdown class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdownMenuLink"
+                role="button"
+                mdbDropdownToggle
+                aria-expanded="false"
+                style="user-select: none;"
+              >
+                Bem-vindo, {{loginService.getUsuarioLogado().username}}
+              </a>
+              <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                @if(loginService.hasRole("Candidato")){
+                <li>
+                  <a class="dropdown-item" href="/candidato/edit">Editar Perfil</a>
+                </li>
+                }
+                @if(loginService.hasRole("Empregador")){
+                <li>
+                  <a class="dropdown-item" href="/empregador/edit">Editar Perfil</a>
+                </li>
+                }
+                <li>
+                  <a class="dropdown-item" (click)="loginService.removerTokenManualmente()">Sair</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+         
+            }
+    </div>
+
+
+      <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+
             <li mdbDropdown class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -82,7 +125,7 @@
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> -->
 
       
     </div>
