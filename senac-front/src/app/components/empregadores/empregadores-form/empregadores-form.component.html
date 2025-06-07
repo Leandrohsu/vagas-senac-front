@@ -5,6 +5,12 @@
       <div class="col-4">
         <div class="card" style="margin-top: 20px;">
           <div class="card-body centralizar">
+            <a href="/vagas" 
+              style="position: absolute; top: 5px; left: 10px; font-weight: bold; 
+                      font-size: 20px; text-decoration: none; color: black; cursor: pointer;"
+              aria-label="Fechar">
+              <i class="fas fa-times"></i>
+            </a>
             <h2>Cadastro de empregador</h2>
   
   
@@ -37,10 +43,10 @@
               <input required  [(ngModel)]="enderecoTemp.numero" type="text" class="form-control" name="numero">
               <br />
               Usuário:<span style="color: red">*</span> <br>
-              <input required [(ngModel)]="empregador.usuario.username" type="text" class="form-control" name="numero">
+              <input required [(ngModel)]="empregador.usuario.username" type="text" class="form-control" name="usuario">
               <br />
               Senha:<span style="color: red">*</span> <br>
-              <input required [(ngModel)]="empregador.usuario.password" type="password" class="form-control" name="numero">
+              <input required [(ngModel)]="empregador.usuario.password" type="password" class="form-control" name="senha">
               <br />
               
               @if(empregador.id > 0){

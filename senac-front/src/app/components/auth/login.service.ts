@@ -5,7 +5,7 @@ import { jwtDecode, JwtPayload } from "jwt-decode";
 import { Login } from './login';
 import { Usuario } from './usuario';
 import { environment } from '../../../environments/environment';
-
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,15 @@ export class LoginService {
     localStorage.removeItem('token');
   }
 
+  removerTokenManualmente() {
+    localStorage.removeItem('token');
+    Swal.fire({
+       icon: "info",
+       title: "Você foi deslogado!",
+       text: "Sua sessão foi encerrada ou expirada, logue novamente para aproveitar o site",
+    });
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }
@@ -49,6 +58,10 @@ export class LoginService {
       return true;
     else
       return false;
+  }
+
+  getUsuarioLogado() {
+    return this.jwtDecode() as Usuario;
   }
 
 

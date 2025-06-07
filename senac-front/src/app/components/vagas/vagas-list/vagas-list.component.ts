@@ -74,11 +74,7 @@ findCandidatoByIdUsuario(idUsuario:number){
       this.candidato = candidato;
     },
     error: (erro) => {
-      Swal.fire({
-        icon: "error",
-        title: "Epa :c",
-        text: "Não achamos nenhuma vaga atualmente",
-      });
+      console.log("Deu erro no findCandidatoBYIdUsuario");
     }
   });
 
@@ -164,14 +160,27 @@ meuEventoTratamento(mensagem:any){
 
 
 inscricao(vaga:Vagas){
-this.candidatoService.inscricao(this.candidato.id,vaga.id).subscribe({
-  next:mensagem=>{
-    alert("sucesso na inscricao");
-    this.findAll();
-  },error:erro=>{
-    alert("deu erro");
-  }
-})
+  if(this.loginService.getUsuarioLogado()){
+    this.candidatoService.inscricao(this.candidato.id,vaga.id).subscribe({
+      next:mensagem=>{
+        Swal.fire({
+        icon: "success",
+        title: "Sucesso!",
+        text: "Você acaba de se candidatar a vaga, seu curriculo e dados foram enviados ao empregador.",
+      });
+        this.findAll();
+      },error:erro=>{
+        alert("deu erro");
+      }
+    })
+}else{
+  Swal.fire({
+        icon: "error",
+        title: "Epa :c",
+        text: "É preciso estar logado para se candidatar",
+      });
+
+}
 
 
 }
