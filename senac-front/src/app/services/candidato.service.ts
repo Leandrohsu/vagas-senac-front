@@ -22,7 +22,7 @@ export class CandidatoService {
   }  
 
     findAll(numPaginaAtual: number): Observable<Pagina>{
-      return this.http.get<Pagina>(this.API+'/findAll'+numPaginaAtual);
+      return this.http.get<Pagina>(this.API+'/findAll/'+numPaginaAtual);
     }
 
     findById(id: number): Observable<Candidato>{
