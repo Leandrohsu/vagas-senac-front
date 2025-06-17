@@ -5,13 +5,15 @@ import Swal from 'sweetalert2';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { FormsModule } from '@angular/forms';
+import { Pagina } from '../../../models/pagina';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap' 
 
 
 
 @Component({
   selector: 'app-candidatos-list',
   standalone: true,
-  imports: [MdbCollapseModule,FormsModule],
+  imports: [MdbCollapseModule,FormsModule,NgbPaginationModule],
   templateUrl: './candidatos-list.component.html',
   styleUrl: './candidatos-list.component.scss'
 })
@@ -21,16 +23,19 @@ lista: Candidato[] = [];
   CandidatoEdit!: Candidato;
   termoBusca: string = '';
   candidatoService = inject(CandidatoService);
-  constructor(){
+  pagina: Pagina = new Pagina();
+  numPaginaAtual: number = 1;
+    constructor(){
     this.findAll();
   }
 
 
   findAll(){
 
-    this.candidatoService.findAll().subscribe({
-      next: (listaRetornada) => {
-        this.lista = listaRetornada;
+    this.candidatoService.findAll(this.numPaginaAtual).subscribe({
+      next: (pagina) => {
+        this.pagina = pagina;
+        this.lista = pagina.content;
       },
       error: (erro) => {
         Swal.fire(erro.error);
@@ -83,7 +88,9 @@ lista: Candidato[] = [];
       }
     });
   }
-
+  trocarPagina(pagina: any) {
+    this.numPaginaAtual = pagina;
+    this.findAll();
 
   }
-
+}

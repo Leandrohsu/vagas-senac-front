@@ -23,9 +23,6 @@ export class VagasService {
     return this.http.get<Vagas>(this.API+'/findById/'+id)
   }
 
-  findCandidatoByIdUsuario(id: number): Observable<Candidato>{
-    return this.http.get<Candidato>(this.API+'/findCandidatoByIdUsuario/'+id)
-  }  
   deleteById(id: number): Observable<string>{
     return this.http.delete<string>(this.API+'/deleteById/'+id, {responseType: 'text' as 'json'})
   }

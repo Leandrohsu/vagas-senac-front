@@ -3,6 +3,7 @@ import { Candidato } from '../models/candidato';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Pagina } from '../models/pagina';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class CandidatoService {
     return this.http.get<Candidato>(this.API+'/findCandidatoByIdUsuario/'+id)
   }  
 
-    findAll(): Observable<Candidato[]>{
-      return this.http.get<Candidato[]>(this.API+'/findAll');
+    findAll(numPaginaAtual: number): Observable<Pagina>{
+      return this.http.get<Pagina>(this.API+'/findAll'+numPaginaAtual);
     }
 
     findById(id: number): Observable<Candidato>{
