@@ -23,10 +23,8 @@
                   </span>
                 </form>
 
-
-
-
-
+                <ngb-pagination (pageChange)="trocarPagina($event)" [pageSize]="pagina.size"
+                [collectionSize]="pagina.totalElements" [(page)]="numPaginaAtual" [boundaryLinks]="true" />
 
           
                 <div class="alinharADireita">

@@ -29,8 +29,8 @@ export class DashboardComponent {
       this.cards[0].value = vagas.length;
     });
 
-    this.candidatoService.findAll().subscribe(candidatos => {
-      this.cards[1].value = candidatos.length;
+    this.candidatoService.findAll(1).subscribe(candidatos => {
+      this.cards[1].value = candidatos.content.length;
     });
 
     this.empregadorService.findAll().subscribe(empregadores => {
