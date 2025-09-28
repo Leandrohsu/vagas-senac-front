@@ -1,3 +1,3 @@
 export const environment = {
-    Servidor: "http://localhost:8080" //coloqueoservidoraqui
+    Servidor: "http://10.35.237.15:8080" //coloqueoservidordobackendaqui
 };
