@@ -5,7 +5,7 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,MdbCollapseModule],
+  imports: [RouterOutlet, MdbCollapseModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

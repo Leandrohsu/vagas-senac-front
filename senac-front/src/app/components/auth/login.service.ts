@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { Login } from './login';
 import { Usuario } from './usuario';
-import { environment } from '../../../environments/environment';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -13,15 +13,15 @@ import Swal from 'sweetalert2';
 export class LoginService {
 
   http = inject(HttpClient);
-  API = environment.Servidor+'/api/login';
-
+  KEYCLOAK_URL = 'http://localhost:6969/realms/pm03/protocol/openid-connect/token';
 
   constructor() { }
 
-
   logar(login: Login): Observable<string> {
-    return this.http.post<string>(this.API, login, {responseType: 'text' as 'json'});
-  }
+  return this.http.post<any>('http://localhost:8080/api/keycloak/login', login).pipe(
+    map(response => response.access_token)
+  );
+}
 
   addToken(token: string) {
     localStorage.setItem('token', token);
@@ -63,6 +63,4 @@ export class LoginService {
   getUsuarioLogado() {
     return this.jwtDecode() as Usuario;
   }
-
-
 }

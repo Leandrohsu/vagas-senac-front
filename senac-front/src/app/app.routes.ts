@@ -39,3 +39,44 @@ export const routes: Routes = [
     ]}
 
 ];
+
+
+// //----------------------------
+
+// // NOVO: Importação do AuthGuard do Keycloak
+// //import { AuthGuard } from 'keycloak-angular';
+
+// import { KeycloakAuthGuard } from './components/auth/keycloak-auth.guard';
+
+// // import { loginGuard } from './components/auth/login.guard'; // Removido ou comentado
+
+// export const routes: Routes = [
+//     { path: "", redirectTo: "vagas", pathMatch: 'full' },
+//     { path: "login", component: LoginComponent },
+
+//     // ROTA PRINCIPAL
+//     {
+//         path: "",
+//         component: PrincipalComponent,
+//         children: [
+//             // LISTAGENS: público
+//             { path: "candidato", component: CandidatosListComponent },
+//             { path: "contato", component: ContatosListComponent },
+//             { path: "empregador", component: EmpregadoresListComponent },
+//             { path: "endereco", component: EnderecosListComponent },
+//             { path: "vagas", component: VagasListComponent },
+
+//             // CRIAÇÃO / EDIÇÃO: precisa estar logado
+//             { path: "candidato/new", component: CandidatosFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "candidato/edit/:id", component: CandidatosFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "contato/new", component: ContatosFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "contato/edit/:id", component: ContatosFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "empregador/edit/:id", component: EmpregadoresFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "endereco/new", component: EnderecosFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "endereco/edit/:id", component: EnderecosFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "vagas/new", component: VagasFormComponent, canActivate: [KeycloakAuthGuard] },
+//             { path: "vagas/edit/:id", component: VagasFormComponent, canActivate: [KeycloakAuthGuard] },
+//         ]
+//     }
+//];
+
