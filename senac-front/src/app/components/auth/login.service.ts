@@ -53,14 +53,30 @@ export class LoginService {
   }
 
   hasRole(role: string) {
-    let user = this.jwtDecode() as Usuario;
-    if (user.role == role)
-      return true;
-    else
-      return false;
-  }
+  const decoded = this.jwtDecode() as any;
+  
+  console.log('JWT completo:', decoded); // ✅ Olha tudo
+  console.log('Procurando role:', role);
+  console.log('realm_access:', decoded.realm_access);
+  console.log('resource_access:', decoded.resource_access);
+  
+  const realmRoles = decoded.realm_access?.roles || [];
+  const clientRoles = decoded.resource_access?.keycloakAPI?.roles || [];
+  
+  console.log('Realm roles:', realmRoles);
+  console.log('Client roles:', clientRoles);
+  
+  return realmRoles.includes(role) || clientRoles.includes(role);
+}
 
   getUsuarioLogado() {
-    return this.jwtDecode() as Usuario;
-  }
+  const decoded = this.jwtDecode() as any;
+  
+  // O Keycloak coloca o username em 'preferred_username'
+  return {
+    username: decoded.preferred_username || decoded.name || 'Usuário',
+    email: decoded.email,
+    // Adiciona outras propriedades se precisar
+  };
+}
 }

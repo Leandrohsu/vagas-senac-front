@@ -1,6 +1,5 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
     <a class="navbar-brand me-2" href="/vagas">
@@ -38,50 +37,31 @@
           <a class="nav-link" href="/vagas">Inicio</a>
         </li>
       </ul>
-      <!-- Left links -->
 
+      <!-- Right side -->
       <div class="d-flex align-items-center">
-        <a href="/login" class="btn btn-link px-3 me-2">
-          Login
-        </a>
-        <a class="btn btn-primary me-3" (click)="abrirmodal()">
-          Cadastro
-        </a>
-        
-        <a class="btn btn-dark px-3" href="https://youtu.be/ZBFPuCKfp9U" role="button">
-          <i class="far fa-question-circle"></i>
-        </a>
-      </div>
-      
-      <div class="d-flex align-items-center">
-            @if (loginService.getUsuarioLogado())
-            {
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        @if (loginService.getToken()) {
+          <!-- Menu usuário logado -->
           <ul class="navbar-nav">
-
             <li mdbDropdown class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
+              <a class="nav-link dropdown-toggle"
                 id="navbarDropdownMenuLink"
                 role="button"
                 mdbDropdownToggle
                 aria-expanded="false"
-                style="user-select: none;"
-              >
+                style="user-select: none;">
                 Bem-vindo, {{loginService.getUsuarioLogado().username}}
               </a>
               <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                @if(loginService.hasRole("Candidato")){
-                <li>
-                  <a class="dropdown-item" href="/candidato/edit">Editar Perfil</a>
-                </li>
+                @if(loginService.hasRole("candidato")){
+                  <li>
+                    <a class="dropdown-item" href="/candidato/edit">Editar Perfil</a>
+                  </li>
                 }
-                @if(loginService.hasRole("Empregador")){
-                <li>
-                  <a class="dropdown-item" href="/empregador/edit">Editar Perfil</a>
-                </li>
+                @if(loginService.hasRole("empregador")){
+                  <li>
+                    <a class="dropdown-item" href="/empregador/edit">Editar Perfil</a>
+                  </li>
                 }
                 <li>
                   <a class="dropdown-item" (click)="loginService.removerTokenManualmente()">Sair</a>
@@ -89,70 +69,31 @@
               </ul>
             </li>
           </ul>
-        </div>
-      </nav>
-         
-            }
+        } @else {
+          <!-- Botões quando não logado -->
+          <a href="/login" class="btn btn-link px-3 me-2">Login</a>
+          <a class="btn btn-primary me-3" (click)="abrirmodal()">Cadastro</a>
+          <a class="btn btn-dark px-3" href="https://youtu.be/ZBFPuCKfp9U" role="button">
+            <i class="far fa-question-circle"></i>
+          </a>
+        }
+      </div>
     </div>
-
-
-      <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <ul class="navbar-nav">
-
-            <li mdbDropdown class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                id="navbarDropdownMenuLink"
-                role="button"
-                mdbDropdownToggle
-                aria-expanded="false"
-                style="user-select: none;"
-              >
-                Dev kit
-              </a>
-              <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li>
-                  <a class="dropdown-item" href="/candidato">Candidato</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/empregador">Empregador</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav> -->
-
-      
-    </div>
-    <!-- Collapsible wrapper -->
   </div>
-  <!-- Container wrapper -->
 </nav>
-<!-- Navbar -->
- 
+
+<!-- Modal -->
 <ng-template #modalEscolha>
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      
       <div class="modal-header">
         <h5 class="modal-title">Deseja se cadastrar como candidato ou empregador?</h5>
         <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
       </div>
-      
       <div class="modal-body text-center">
-        <a class="btn btn-info me-3" href="/candidato/new">
-          Candidato
-        </a>
-        <a class="btn btn-success me-3" href="/empregador/new">
-          Empregador
-        </a>
+        <a class="btn btn-info me-3" href="/candidato/new">Candidato</a>
+        <a class="btn btn-success me-3" href="/empregador/new">Empregador</a>
       </div>
-
     </div>
   </div>
 </ng-template>

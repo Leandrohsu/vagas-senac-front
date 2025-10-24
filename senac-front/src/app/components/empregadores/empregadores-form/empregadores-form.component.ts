@@ -58,7 +58,9 @@ export class EmpregadoresFormComponent {
     const keycloakData = {
       username: this.empregador.usuario.username,
       email: this.empregador.usuario.username + "@tempmail.com", // ✅ ADICIONA ESSA LINHA
-      password: this.empregador.usuario.password
+      password: this.empregador.usuario.password,
+      firstName: this.empregador.nome || this.empregador.usuario.username, // ✅ Usa o nome do empregador
+      lastName: "Empregador" // ✅ Ou outro campo
     };
 
     this.http.post('http://localhost:8080/api/keycloak/create-user', keycloakData).subscribe({
